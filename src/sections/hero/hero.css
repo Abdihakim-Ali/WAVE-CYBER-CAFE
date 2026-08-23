@@ -31,6 +31,7 @@
 
 .hero-content {
     max-width: 760px;
+    margin-left: 120px;
 }
 
 /* =========================
@@ -61,7 +62,7 @@
     color: var(--clr-white);
     font-family: var(--font-heading);
     font-size: clamp(3rem, 7vw, 6rem);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.05;
     letter-spacing: -2px;
 }
