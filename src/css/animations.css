@@ -1,0 +1,42 @@
+.digital-pulse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    z-index: 2000;
+    overflow: hidden;
+    background: rgba(0, 200, 255, 0.08);
+}
+
+.digital-pulse::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20%;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--clr-primary),
+        transparent
+    );
+
+    box-shadow:
+        0 0 10px rgba(0, 200, 255, 0.7);
+
+    animation: wavePulse 4s linear infinite;
+}
+
+@keyframes wavePulse {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(600%);
+    }
+
+}

@@ -1,0 +1,740 @@
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 80px;
+    background: var(--clr-bg);
+}
+
+/* =========================
+   HERO CONTAINER
+========================= */
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+}
+
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content {
+    max-width: 760px;
+}
+
+/* =========================
+   EYEBROW
+========================= */
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 7px 12px;
+    color: var(--clr-primary);
+    background: rgba(0, 200, 255, 0.08);
+    border: 1px solid rgba(0, 200, 255, 0.18);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.hero-title {
+    margin: 0;
+    color: var(--clr-white);
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+.hero-title span {
+    display: block;
+    color: var(--clr-primary);
+    text-shadow:
+        0 0 30px rgba(0, 200, 255, 0.18);
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.hero-description {
+    max-width: 620px;
+    margin-top: 28px;
+    color: var(--clr-text);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 36px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease;
+}
+
+/* Primary */
+
+.hero-btn-primary {
+    color: var(--clr-white);
+    background: var(--clr-primary);
+    border: 1px solid var(--clr-primary);
+}
+
+.hero-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 10px 30px rgba(0, 200, 255, 0.22);
+}
+
+
+/* Secondary */
+
+.hero-btn-secondary {
+    color: var(--clr-text);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-btn-secondary:hover {
+    color: var(--clr-white);
+    border-color: rgba(0, 200, 255, 0.4);
+    transform: translateY(-3px);
+    background: rgba(0, 200, 255, 0.05);
+}
+
+/* =========================
+   HERO BACKGROUND
+========================= */
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* =========================
+   TECHNOLOGY GRID
+========================= */
+
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    background-image:
+        linear-gradient(
+            rgba(0, 200, 255, 0.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 200, 255, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black 0%,
+            black 65%,
+            transparent 100%
+        );
+}
+
+
+/* =========================
+   ATMOSPHERIC GLOWS
+========================= */
+
+.hero-glow {
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.14;
+    animation:
+        heroFloat 8s ease-in-out infinite;
+}
+
+/* CYAN GLOW */
+
+.hero-glow-one {
+    top: 5%;
+    right: 5%;
+    background: var(--clr-primary);
+}
+
+
+/* PURPLE GLOW */
+
+.hero-glow-two {
+    bottom: -25%;
+    left: 5%;
+    background: var(--clr-accent-purple);
+    animation-delay: -4s;
+}
+
+/* =========================
+   BACKGROUND FLOAT
+========================= */
+
+@keyframes heroFloat {
+
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(0, -25px, 0);
+    }
+}
+
+/* =========================
+   WAVE DIGITAL CORE SYSTEM
+========================= */
+
+.hero-visual {
+    position: relative;
+    width: 560px;
+    height: 560px;
+    flex-shrink: 0;
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    isolation: isolate;
+}
+
+
+/* =========================
+   CORE ATMOSPHERE
+========================= */
+
+.hero-visual::before {
+    content: "";
+
+    position: absolute;
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 200, 255, 0.12) 0%,
+            rgba(0, 200, 255, 0.05) 35%,
+            rgba(139, 92, 246, 0.035) 55%,
+            transparent 72%
+        );
+
+    filter: blur(8px);
+
+    animation:
+        coreAtmosphere
+        6s
+        ease-in-out
+        infinite;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+@keyframes coreAtmosphere {
+
+    0%,
+    100% {
+        transform: scale(0.95);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   ORBIT BASE
+========================= */
+
+.tech-orbit {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    transform-origin: center;
+
+    z-index: 1;
+}
+
+
+/* =========================
+   INNER CYAN ORBIT
+========================= */
+
+.tech-orbit-one {
+    width: 310px;
+    height: 310px;
+
+    border:
+        1px solid rgba(0, 200, 255, 0.30);
+
+    box-shadow:
+        0 0 20px rgba(0, 200, 255, 0.05),
+        inset 0 0 20px rgba(0, 200, 255, 0.025);
+
+    animation:
+        orbitFloatOne
+        10s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================
+   MIDDLE ORBIT
+========================= */
+
+.tech-orbit-one::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 22px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed rgba(0, 200, 255, 0.12);
+    animation: orbitRotateOne 18s linear infinite;
+}
+
+
+/* =========================
+   OUTER PURPLE ORBIT
+========================= */
+
+.tech-orbit-two {
+    width: 450px;
+    height: 450px;
+
+    border:
+        1px solid rgba(139, 92, 246, 0.22);
+
+    box-shadow:
+        0 0 35px rgba(139, 92, 246, 0.04),
+        inset 0 0 35px rgba(139, 92, 246, 0.025);
+    animation: orbitRotateTwo 26s linear infinite reverse;
+}
+
+/* =========================
+   ORBIT DASH MOTION
+========================= */
+/* =========================
+   ORBIT ROTATION
+========================= */
+
+@keyframes orbitRotateOne {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes orbitRotateTwo {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================
+   OUTER DASHED ORBIT
+========================= */
+
+.tech-orbit-two::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 30px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed rgba(0, 200, 255, 0.10);
+
+    animation:
+        orbitDashTwo
+        28s
+        linear
+        infinite reverse;
+}
+
+
+/* =========================
+   ORBIT ENERGY POINTS
+========================= */
+
+.tech-orbit-one::before,
+.tech-orbit-two::before {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--clr-primary);
+
+    box-shadow:
+        0 0 8px var(--clr-primary),
+        0 0 22px rgba(0, 200, 255, 0.65),
+        0 0 45px rgba(0, 200, 255, 0.25);
+
+    animation:
+        orbitEnergyPulse
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+/* INNER ENERGY POINT */
+
+.tech-orbit-one::before {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* OUTER ENERGY POINT */
+
+.tech-orbit-two::before {
+    top: 50%;
+    right: -4px;
+    background: #8b5cf6;
+    box-shadow:
+        0 0 8px #8b5cf6,
+        0 0 22px rgba(139, 92, 246, 0.6),
+        0 0 45px rgba(139, 92, 246, 0.25);
+
+    animation-delay: -1.2s;
+}
+
+/* =========================
+   ORBIT DASH MOTION
+========================= */
+
+@keyframes orbitDashOne {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes orbitDashTwo {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================
+   ENERGY PULSE
+========================= */
+
+@keyframes orbitEnergyPulse {
+
+    0%,
+    100% {
+        transform: scale(0.75);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(1.35);
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   ENERGY POINT PULSE
+========================= */
+
+@keyframes orbitPointPulse {
+
+    0%,
+    100% {
+        opacity: 0.45;
+        scale: 0.75;
+    }
+
+    50% {
+        opacity: 1;
+        scale: 1.35;
+    }
+}
+
+/* =========================
+   DIGITAL WAVE BACKGROUND
+========================= */
+
+.digital-wave-field {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 360px;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.78;
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 20%,
+            black 75%,
+            transparent 100%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(0, 200, 255, 0.18)
+        );
+}
+
+
+/* =========================
+   BASE DIGITAL WAVE
+========================= */
+
+.digital-wave-line {
+    position: absolute;
+    left: -5%;
+    width: 110%;
+    height: 200px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform-origin: center;
+}
+
+
+/* =========================
+   CYAN WAVE 1
+   FOREGROUND
+========================= */
+
+.wave-line-one {
+    bottom: 95px;
+    height: 190px;
+    border-top:
+        2px solid rgba(0, 200, 255, 0.85);
+    box-shadow:
+        0 -2px 14px rgba(0, 200, 255, 0.35);
+    opacity: 1;
+    transform:
+        rotate(-2deg)
+        scaleX(1.08);
+    animation:
+        digitalWaveOne
+        9s
+        ease-in-out
+        infinite;
+}
+
+/* =========================
+   CYAN WAVE 2
+   MIDGROUND
+========================= */
+
+.wave-line-two {
+    bottom: 75px;
+    height: 220px;
+    border-top:
+        2px solid rgba(0, 200, 255, 0.55);
+    box-shadow:
+        0 -2px 12px rgba(0, 200, 255, 0.25);
+    opacity: 0.65;
+    transform:
+        rotate(2deg)
+        scaleX(1.12);
+    animation:
+        digitalWaveTwo
+        12s
+        ease-in-out
+        infinite;
+}
+
+/* =========================
+   PURPLE WAVE
+   BACKGROUND
+========================= */
+
+.wave-line-three {
+    bottom: 55px;
+    height: 250px;
+    border-top:
+        2px solid rgba(139, 92, 246, 0.60);
+    box-shadow:
+        0 -2px 16px rgba(139, 92, 246, 0.30);
+    opacity: 0.45;
+    transform:
+        rotate(-1deg)
+        scaleX(1.15);
+    animation:
+        digitalWaveThree
+        15s
+        ease-in-out
+        infinite;
+}
+
+/* =========================
+   CYAN WAVE 1 MOTION
+========================= */
+
+@keyframes digitalWaveOne {
+
+    0%,
+    100% {
+        transform:
+            translateX(-3%)
+            rotate(-2deg)
+            scaleX(1.08);
+    }
+
+    50% {
+        transform:
+            translateX(3%)
+            rotate(2deg)
+            scaleX(1.12);
+    }
+}
+
+
+/* =========================
+   CYAN WAVE 2 MOTION
+========================= */
+
+@keyframes digitalWaveTwo {
+
+    0%,
+    100% {
+        transform:
+            translateX(3%)
+            rotate(2deg)
+            scaleX(1.12);
+    }
+
+    50% {
+        transform:
+            translateX(-3%)
+            rotate(-2deg)
+            scaleX(1.08);
+    }
+}
+
+
+/* =========================
+   PURPLE WAVE MOTION
+========================= */
+
+@keyframes digitalWaveThree {
+
+    0%,
+    100% {
+        transform:
+            translateX(-4%)
+            rotate(-1deg)
+            scaleX(1.15);
+    }
+
+    50% {
+        transform:
+            translateX(4%)
+            rotate(1deg)
+            scaleX(1.18);
+    }
+}

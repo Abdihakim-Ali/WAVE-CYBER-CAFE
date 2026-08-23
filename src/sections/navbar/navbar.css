@@ -1,0 +1,669 @@
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    background: rgba(5, 10, 20, 0.88);
+    border-bottom:
+        1px solid rgba(0, 200, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* =========================
+   NAVBAR CONTAINER
+========================= */
+
+.navbar-container {
+    width: min(1400px, 92%);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* =========================
+   NAVBAR BRAND
+========================= */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--clr-white);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* =========================
+   BRAND LOGO
+========================= */
+
+.navbar-brand-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* =========================
+   BRAND LOGO HOVER
+========================= */
+
+.navbar-brand-logo {
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.navbar-brand:hover .navbar-brand-logo {
+    transform: scale(1.08);
+
+    filter:
+        drop-shadow(0 0 5px rgba(0, 200, 255, 0.55))
+        drop-shadow(0 0 14px rgba(0, 200, 255, 0.25));
+}
+
+
+/* =========================
+   BRAND TEXT
+========================= */
+
+.navbar-brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* =========================
+   BRAND HOVER
+========================= */
+
+.navbar-brand:hover .navbar-brand-name {
+    color: var(--clr-primary);
+    letter-spacing: 0.27em;
+    text-shadow:
+        0 0 6px rgba(0, 200, 255, 0.35),
+        0 0 18px rgba(0, 200, 255, 0.18);
+    transform: translateY(-1px);
+}
+
+/* =========================
+   WAVE
+========================= */
+
+.navbar-brand-name {
+    color: var(--clr-white);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.28em;
+    white-space: nowrap;
+}
+
+/* =========================
+   TECH HUB
+========================= */
+
+.navbar-brand-subtitle {
+    margin-top: 4px;
+    color: var(--clr-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    gap: clamp(18px, 1.7vw, 26px);
+    margin-left: 0;
+}
+
+/* =========================
+   NAVIGATION LINK
+========================= */
+
+.navbar-link {
+    position: relative;
+    padding: 8px 0;
+    color: var(--clr-white);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+        color 0.25s ease;
+}
+
+/* =========================
+   LINK HOVER
+========================= */
+
+.navbar-link:hover {
+    color: var(--clr-primary);
+
+    text-shadow:
+        0 0 8px rgba(0, 200, 255, 0.22);
+}
+
+/* =========================
+   ACTIVE LINK
+========================= */
+
+.navbar-link.active {
+    color: var(--clr-primary);
+    text-shadow:
+        0 0 8px rgba(0, 200, 255, 0.3);
+}
+
+/* =========================
+   NAVIGATION INDICATOR
+========================= */
+
+.navbar-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 1px;
+    width: 0;
+    height: 1px;
+    transform: translateX(-50%);
+    background: var(--clr-primary);
+    box-shadow:
+        0 0 8px rgba(0, 200, 255, 0.25);
+    transition:
+        width 0.25s ease;
+}
+
+/* =========================
+   NAVIGATION GROUP DIVIDER
+========================= */
+
+.navbar-group-start {
+    margin-left: 8px;
+    padding-left: 20px;
+
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+
+    transition:
+        border-color 0.3s ease;
+}
+
+.navbar-group-start:hover {
+    border-left-color:
+        rgba(0, 200, 255, 0.22);
+}
+
+/* =========================
+   NAVBAR CTA
+========================= */
+
+.navbar-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-height: 40px;
+    padding: 0 17px;
+    color: var(--clr-white);
+    background: rgba(0, 200, 255, 0.05);
+    border: 1px solid rgba(0, 200, 255, 0.32);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* =========================
+   CTA LIGHT SWEEP
+========================= */
+
+.navbar-cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 200, 255, 0.16),
+        transparent
+    );
+    transform: skewX(-20deg);
+    transition:
+        left 0.55s ease;
+}
+
+/* =========================
+   CTA HOVER
+========================= */
+
+.navbar-cta:hover {
+    color: var(--clr-white);
+    background: rgba(0, 200, 255, 0.10);
+    border-color: rgba(0, 200, 255, 0.70);
+    box-shadow:
+        0 0 12px rgba(0, 200, 255, 0.12),
+        0 0 28px rgba(0, 200, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   LIGHT SWEEP ACTIVE
+========================= */
+
+.navbar-cta:hover::before {
+    left: 140%;
+}
+
+/* =========================
+   CTA ARROW
+========================= */
+
+.navbar-cta-arrow {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 1rem;
+    line-height: 1;
+    transition:
+        transform 0.3s ease;
+}
+
+/* =========================
+   CTA TEXT
+========================= */
+
+.navbar-cta span:first-child {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================
+   CTA ARROW HOVER
+========================= */
+
+.navbar-cta:hover .navbar-cta-arrow {
+    transform: translateX(5px);
+}
+
+/* =========================
+   NAVBAR DROPDOWN
+========================= */
+
+.navbar-dropdown {
+    position: relative;
+}
+
+/* =========================
+   DROPDOWN TOGGLE
+========================= */
+
+.navbar-dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+
+/* =========================
+   DROPDOWN ARROW
+========================= */
+
+.navbar-dropdown-arrow {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 3px;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.65);
+    border-right: 1.5px solid rgba(255, 255, 255, 0.65);
+    transform: rotate(45deg);
+    opacity: 0.9;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        opacity 0.3s ease;
+}
+
+/* =========================
+   DROPDOWN ARROW ACTIVE
+========================= */
+
+.navbar-dropdown:hover .navbar-dropdown-arrow,
+.navbar-dropdown:focus-within .navbar-dropdown-arrow {
+    transform: rotate(135deg);
+    border-color: var(--clr-primary);    
+    opacity: 1;
+}
+
+.navbar-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    width: 190px;
+    transform:
+        translateX(-50%)
+        translateY(-6px);
+    padding: 7px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 18, 32, 0.98),
+            rgba(5, 10, 20, 0.98)
+        );
+    border:
+        1px solid rgba(0, 200, 255, 0.18);
+    border-radius: 8px;
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.38),
+        0 0 25px rgba(0, 200, 255, 0.04);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease,
+        visibility 0.22s ease;
+    overflow: hidden;
+}
+
+.navbar-dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12px;
+    right: 12px;
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--clr-primary),
+            transparent
+        );
+    opacity: 0.7;
+}
+
+/* =========================
+   DROPDOWN OPEN
+========================= */
+
+.navbar-dropdown:hover .navbar-dropdown-menu,
+.navbar-dropdown:focus-within .navbar-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+/* =========================
+   DROPDOWN ITEM
+========================= */
+
+.navbar-dropdown-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 11px;
+    color: var(--clr-text);
+    text-decoration: none;
+    border-radius: 5px;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        padding-left 0.2s ease;
+}
+
+/* =========================
+   ITEM HOVER
+========================= */
+
+.navbar-dropdown-item:hover {
+    color: var(--clr-white);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 200, 255, 0.09),
+            rgba(0, 200, 255, 0.025)
+        );
+
+    padding-left: 15px;
+}
+
+.navbar-dropdown-item::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    width: 2px;
+    height: 0;
+    border-radius: 2px;
+    background: var(--clr-primary);
+    box-shadow:
+        0 0 7px rgba(0, 200, 255, 0.45);
+    transition:
+        height 0.2s ease;
+}
+
+.navbar-dropdown-item:hover::before {
+    height: 14px;
+}
+
+/* =========================
+   ITEM TITLE
+========================= */
+
+.navbar-dropdown-item-title {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* =========================
+   DROPDOWN DIVIDER
+========================= */
+
+.navbar-dropdown-divider {
+    height: 1px;
+    margin: 5px 7px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   VIEW ALL PRODUCTS
+========================= */
+
+.navbar-dropdown-view-all {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 11px;
+    color: var(--clr-primary);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    transition:
+        background-color 0.2s ease,
+        padding-left 0.2s ease;
+}
+.navbar-dropdown-view-all span:last-child {
+    transition:
+        transform 0.2s ease;
+}
+
+.navbar-dropdown-view-all:hover span:last-child {
+    transform: translateX(4px);
+}
+
+/* =========================
+   GAMING NAVIGATION
+========================= */
+
+.navbar-group-start {
+    margin-left: 8px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+    transition:
+        color 0.25s ease,
+        border-color 0.3s ease;
+}
+
+
+/* =========================
+   GAMING DIVIDER HOVER
+========================= */
+
+.navbar-group-start:hover {
+    border-left-color:
+        rgba(0, 200, 255, 0.22);
+}
+
+
+/* =========================
+   GAMING ICON
+========================= */
+
+.navbar-gaming-icon {
+    width: 0;
+    height: 14px;
+    margin-right: 0;
+    flex-shrink: 0;
+    color: var(--clr-primary);
+    opacity: 0;
+    transform:
+        translateX(-5px)
+        scale(0.8);
+    transition:
+        width 0.25s ease,
+        margin-right 0.25s ease,
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================
+   GAMING ICON HOVER
+========================= */
+
+.navbar-group-start:hover .navbar-gaming-icon {
+    width: 16px;
+    margin-right: 5px;
+    opacity: 1;
+    transform:
+        translateX(0)
+        scale(1);
+}
+
+/* =========================
+   TRAINING NAVIGATION
+========================= */
+
+.navbar-training-link {
+    display: inline-flex;
+
+    align-items: center;
+}
+
+
+/* =========================
+   TRAINING ICON
+========================= */
+
+.navbar-training-icon {
+    width: 0;
+    height: 14px;
+
+    margin-right: 0;
+
+    flex-shrink: 0;
+
+    color: var(--clr-primary);
+
+    opacity: 0;
+
+    transform:
+        translateX(-5px)
+        scale(0.8);
+
+    transition:
+        width 0.25s ease,
+        margin-right 0.25s ease,
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================
+   TRAINING HOVER
+========================= */
+
+.navbar-training-link:hover .navbar-training-icon {
+    width: 16px;
+
+    margin-right: 5px;
+
+    opacity: 1;
+
+    transform:
+        translateX(0)
+        scale(1);
+}
+
+/* =========================
+   CONTACT NAVIGATION
+========================= */
+
+.navbar-link[href="#contact"] {
+    transition:
+        color 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+.navbar-link[href="#contact"]:hover {
+    color: var(--clr-primary);
+
+    text-shadow:
+        0 0 8px rgba(0, 200, 255, 0.25);
+}

@@ -1,0 +1,17 @@
+:root {
+    --clr-primary: #00c8ff;
+    --clr-bg: #070b14;
+    --clr-surface: #111827;
+
+    --clr-white: #ffffff;
+    --clr-text: #a8b3c7;
+    --clr-text-muted: #6b7280;
+    --clr-accent-purple: #6d5ef8;
+
+    --font-heading: "Orbitron", sans-serif;
+    --font-body: "Poppins", sans-serif;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+}
