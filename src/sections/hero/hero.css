@@ -251,11 +251,9 @@
     height: 560px;
     flex-shrink: 0;
     margin-left: auto;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     isolation: isolate;
 }
 
@@ -266,13 +264,10 @@
 
 .hero-visual::before {
     content: "";
-
     position: absolute;
     width: 300px;
     height: 300px;
-
     border-radius: 50%;
-
     background:
         radial-gradient(
             circle,
@@ -281,15 +276,12 @@
             rgba(139, 92, 246, 0.035) 55%,
             transparent 72%
         );
-
     filter: blur(8px);
-
     animation:
         coreAtmosphere
         6s
         ease-in-out
         infinite;
-
     pointer-events: none;
     z-index: 0;
 }
@@ -316,13 +308,9 @@
 
 .tech-orbit {
     position: absolute;
-
     border-radius: 50%;
-
     pointer-events: none;
-
     transform-origin: center;
-
     z-index: 1;
 }
 
@@ -334,14 +322,11 @@
 .tech-orbit-one {
     width: 310px;
     height: 310px;
-
     border:
         1px solid rgba(0, 200, 255, 0.30);
-
     box-shadow:
         0 0 20px rgba(0, 200, 255, 0.05),
         inset 0 0 20px rgba(0, 200, 255, 0.025);
-
     animation:
         orbitFloatOne
         10s
@@ -356,13 +341,9 @@
 
 .tech-orbit-one::after {
     content: "";
-
     position: absolute;
-
     inset: 22px;
-
     border-radius: 50%;
-
     border:
         1px dashed rgba(0, 200, 255, 0.12);
     animation: orbitRotateOne 18s linear infinite;
@@ -376,19 +357,14 @@
 .tech-orbit-two {
     width: 450px;
     height: 450px;
-
     border:
         1px solid rgba(139, 92, 246, 0.22);
-
     box-shadow:
         0 0 35px rgba(139, 92, 246, 0.04),
         inset 0 0 35px rgba(139, 92, 246, 0.025);
     animation: orbitRotateTwo 26s linear infinite reverse;
 }
 
-/* =========================
-   ORBIT DASH MOTION
-========================= */
 /* =========================
    ORBIT ROTATION
 ========================= */
@@ -422,16 +398,11 @@
 
 .tech-orbit-two::after {
     content: "";
-
     position: absolute;
-
     inset: 30px;
-
     border-radius: 50%;
-
     border:
         1px dashed rgba(0, 200, 255, 0.10);
-
     animation:
         orbitDashTwo
         28s
@@ -447,21 +418,15 @@
 .tech-orbit-one::before,
 .tech-orbit-two::before {
     content: "";
-
     position: absolute;
-
     width: 8px;
     height: 8px;
-
     border-radius: 50%;
-
     background: var(--clr-primary);
-
     box-shadow:
         0 0 8px var(--clr-primary),
         0 0 22px rgba(0, 200, 255, 0.65),
         0 0 45px rgba(0, 200, 255, 0.25);
-
     animation:
         orbitEnergyPulse
         2.5s
@@ -737,5 +702,226 @@
             translateX(4%)
             rotate(1deg)
             scaleX(1.18);
+    }
+}
+
+/* =========================
+   TECHNOLOGY NODES
+========================= */
+
+.tech-node {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    color: rgba(220, 235, 245, 0.78);
+    background:
+        rgba(5, 12, 24, 0.55);
+    border:
+        1px solid rgba(0, 200, 255, 0.12);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow:
+        0 0 18px rgba(0, 200, 255, 0.035);
+    z-index: 4;
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================
+   NODE ICON
+========================= */
+
+.tech-node-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: var(--clr-primary);
+    font-size: 0.9rem;
+    text-shadow:
+        0 0 8px rgba(0, 200, 255, 0.45);
+}
+
+
+/* =========================
+   COMPUTING
+========================= */
+
+.tech-node-computing {
+    top: 21%;
+    right: 11%;
+    animation:
+        nodeFloatOne
+        6s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================
+   CONNECTIVITY
+========================= */
+
+.tech-node-network {
+    top: 43%;
+    left: 3%;
+    animation:
+        nodeFloatTwo
+        7s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================
+   GAMING
+========================= */
+
+.tech-node-gaming {
+    right: 3%;
+    bottom: 22%;
+    animation:
+        nodeFloatThree
+        6.5s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================
+   IT SERVICES
+========================= */
+
+.tech-node-services {
+    bottom: 19%;
+    left: 10%;
+    animation:
+        nodeFloatFour
+        8s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================
+   NODE HOVER
+========================= */
+
+.tech-node:hover {
+    color: var(--clr-white);
+    background:
+        rgba(0, 200, 255, 0.08);
+    border-color:
+        rgba(0, 200, 255, 0.38);
+    box-shadow:
+        0 0 12px rgba(0, 200, 255, 0.12),
+        0 0 30px rgba(0, 200, 255, 0.05);
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   NODE ENERGY DOT
+========================= */
+
+.tech-node::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--clr-primary);
+    box-shadow:
+        0 0 6px var(--clr-primary),
+        0 0 14px rgba(0, 200, 255, 0.45);
+    opacity: 0.75;
+}
+
+
+/* LEFT NODES */
+
+.tech-node-network::before,
+.tech-node-services::before {
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* RIGHT NODES */
+
+.tech-node-computing::before,
+.tech-node-gaming::before {
+    left: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* =========================
+   NODE FLOAT ANIMATIONS
+========================= */
+
+@keyframes nodeFloatOne {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+@keyframes nodeFloatTwo {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+
+@keyframes nodeFloatThree {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+@keyframes nodeFloatFour {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(6px);
     }
 }
