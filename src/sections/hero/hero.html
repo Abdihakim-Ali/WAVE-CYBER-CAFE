@@ -1,210 +1,269 @@
 <section class="hero" id="home">
+<!-- =========================HERO BACKGROUND========================== -->
+    <div class="hero-background" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-glow hero-glow-two"></div>
 
-<!-- HERO BACKGROUND -->
-
-<div class="hero-background" aria-hidden="true">
-
-    <div class="hero-grid"></div>
-    <div class="hero-glow hero-glow-one"></div>
-    <div class="hero-glow hero-glow-two"></div>
-
-   <!-- DIGITAL WAVE TERRAIN -->
-
-<div class="digital-wave-field" aria-hidden="true">
-
-    <svg
-        class="digital-wave-svg"
-        viewBox="0 0 1600 360"
-        preserveAspectRatio="none"
-    >
-
-        <defs>
-
-            <!-- CYAN GLOW -->
-            <linearGradient
-                id="waveCyan"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
+<!-- =========================DIGITAL WAVE TERRAIN ========================== -->
+        <div class="digital-wave-field">
+            <svg
+                class="digital-wave-svg"
+                viewBox="0 0 1600 360"
+                preserveAspectRatio="none"
             >
-                <stop offset="0%" stop-color="#00c8ff" stop-opacity="0" />
-                <stop offset="25%" stop-color="#00c8ff" stop-opacity="0.7" />
-                <stop offset="50%" stop-color="#00c8ff" stop-opacity="0.9" />
-                <stop offset="75%" stop-color="#00c8ff" stop-opacity="0.7" />
-                <stop offset="100%" stop-color="#00c8ff" stop-opacity="0" />
-            </linearGradient>
+                <defs>
 
-            <!-- PURPLE GLOW -->
-            <linearGradient
-                id="wavePurple"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-            >
-                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0" />
-                <stop offset="30%" stop-color="#8b5cf6" stop-opacity="0.5" />
-                <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.8" />
-                <stop offset="70%" stop-color="#8b5cf6" stop-opacity="0.5" />
-                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
-            </linearGradient>
+                    <!-- CYAN GRADIENT -->
 
-            <!-- WAVE GLOW -->
-            <filter id="waveGlow">
-                <feGaussianBlur
-                    stdDeviation="2.5"
-                    result="blur"
-                />
-                <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                </feMerge>
-            </filter>
+                    <linearGradient
+                        id="waveCyan"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                    >
 
-        </defs>
+                        <stop
+                            offset="0%"
+                            stop-color="#00c8ff"
+                            stop-opacity="0"
+                        />
 
+                        <stop
+                            offset="25%"
+                            stop-color="#00c8ff"
+                            stop-opacity="0.7"
+                        />
 
-        <!-- =========================
-             CYAN DIGITAL WAVES
-        ========================== -->
+                        <stop
+                            offset="50%"
+                            stop-color="#00c8ff"
+                            stop-opacity="0.9"
+                        />
 
-        <g
-            class="wave-layer wave-layer-cyan"
-            fill="none"
-            filter="url(#waveGlow)"
-        >
+                        <stop
+                            offset="75%"
+                            stop-color="#00c8ff"
+                            stop-opacity="0.7"
+                        />
 
-            <path
-                d="M-100 230
-                   C100 170, 220 285, 400 220
-                   S700 150, 900 225
-                   S1200 290, 1450 205
-                   S1650 170, 1750 220"
-                stroke="url(#waveCyan)"
-                stroke-width="2"
-            />
+                        <stop
+                            offset="100%"
+                            stop-color="#00c8ff"
+                            stop-opacity="0"
+                        />
 
-            <path
-                d="M-100 250
-                   C100 190, 220 305, 410 240
-                   S700 175, 920 245
-                   S1200 310, 1450 225
-                   S1650 190, 1750 240"
-                stroke="url(#waveCyan)"
-                stroke-width="1.5"
-            />
+                    </linearGradient>
 
-            <path
-                d="M-100 270
-                   C100 210, 230 325, 420 260
-                   S710 195, 930 265
-                   S1210 330, 1460 245
-                   S1650 210, 1750 260"
-                stroke="url(#waveCyan)"
-                stroke-width="1"
-            />
+                    <!-- PURPLE GRADIENT -->
 
-            <path
-                d="M-100 290
-                   C110 230, 240 345, 430 280
-                   S720 215, 940 285
-                   S1220 350, 1470 265
-                   S1660 230, 1750 280"
-                stroke="url(#waveCyan)"
-                stroke-width="1"
-            />
+                    <linearGradient
+                        id="wavePurple"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                    >
 
-        </g>
+                        <stop
+                            offset="0%"
+                            stop-color="#8b5cf6"
+                            stop-opacity="0"
+                        />
 
+                        <stop
+                            offset="30%"
+                            stop-color="#8b5cf6"
+                            stop-opacity="0.5"
+                        />
 
-        <!-- =========================
-             PURPLE DIGITAL WAVES
-        ========================== -->
+                        <stop
+                            offset="50%"
+                            stop-color="#8b5cf6"
+                            stop-opacity="0.8"
+                        />
 
-        <g
-            class="wave-layer wave-layer-purple"
-            fill="none"
-            filter="url(#waveGlow)"
-        >
+                        <stop
+                            offset="70%"
+                            stop-color="#8b5cf6"
+                            stop-opacity="0.5"
+                        />
 
-            <path
-                d="M-100 245
-                   C100 315, 260 190, 450 250
-                   S720 320, 930 245
-                   S1200 180, 1430 255
-                   S1650 310, 1750 250"
-                stroke="url(#wavePurple)"
-                stroke-width="1.5"
-            />
+                        <stop
+                            offset="100%"
+                            stop-color="#8b5cf6"
+                            stop-opacity="0"
+                        />
 
-            <path
-                d="M-100 265
-                   C100 335, 260 210, 450 270
-                   S720 340, 930 265
-                   S1200 200, 1430 275
-                   S1650 330, 1750 270"
-                stroke="url(#wavePurple)"
-                stroke-width="1"
-            />
+                    </linearGradient>
 
-            <path
-                d="M-100 285
-                   C100 355, 270 230, 460 290
-                   S730 360, 940 285
-                   S1210 220, 1440 295
-                   S1660 350, 1750 290"
-                stroke="url(#wavePurple)"
-                stroke-width="1"
-            />
+                    <!-- WAVE GLOW -->
 
-        </g>
+                    <filter id="waveGlow">
+                        <feGaussianBlur
+                            stdDeviation="2.5"
+                            result="blur"
+                        />
+                        <feMerge>
 
+                            <feMergeNode in="blur"></feMergeNode>
 
-        <!-- =========================
-             DIGITAL ENERGY POINTS
-        ========================== -->
+                            <feMergeNode in="SourceGraphic"></feMergeNode>
 
-        <g class="wave-particles">
+                        </feMerge>
+                    </filter>
+                </defs>
 
-            <circle cx="120" cy="215" r="2" />
-            <circle cx="250" cy="275" r="1.5" />
-            <circle cx="390" cy="225" r="2" />
-            <circle cx="520" cy="285" r="1.5" />
-            <circle cx="670" cy="205" r="2" />
-            <circle cx="810" cy="265" r="1.5" />
-            <circle cx="960" cy="220" r="2" />
-            <circle cx="1100" cy="285" r="1.5" />
-            <circle cx="1240" cy="230" r="2" />
-            <circle cx="1390" cy="275" r="1.5" />
-            <circle cx="1510" cy="215" r="2" />
+                <!-- =========================
+                     CYAN WAVES
+                ========================== -->
+                <g
+                    class="wave-layer wave-layer-cyan"
+                    fill="none"
+                    filter="url(#waveGlow)"
+                >
 
-        </g>
+                    <path
+                        d="M-100 230
+                           C100 170, 220 285, 400 220
+                           S700 150, 900 225
+                           S1200 290, 1450 205
+                           S1650 170, 1750 220"
+                        stroke="url(#waveCyan)"
+                        stroke-width="2"
+                    />
 
-    </svg>
+                    <path
+                        d="M-100 250
+                           C100 190, 220 305, 410 240
+                           S700 175, 920 245
+                           S1200 310, 1450 225
+                           S1650 190, 1750 240"
+                        stroke="url(#waveCyan)"
+                        stroke-width="1.5"
+                    />
 
-</div>
-</div>
+                    <path
+                        d="M-100 270
+                           C100 210, 230 325, 420 260
+                           S710 195, 930 265
+                           S1210 330, 1460 245
+                           S1650 210, 1750 260"
+                        stroke="url(#waveCyan)"
+                        stroke-width="1"
+                    />
 
-    <!-- HERO CONTAINER -->
+                    <path
+                        d="M-100 290
+                           C110 230, 240 345, 430 280
+                           S720 215, 940 285
+                           S1220 350, 1470 265
+                           S1660 230, 1750 280"
+                        stroke="url(#waveCyan)"
+                        stroke-width="1"
+                    />
 
+                </g>
+
+                <!-- =========================
+                     PURPLE WAVES
+                ========================== -->
+
+                <g
+                    class="wave-layer wave-layer-purple"
+                    fill="none"
+                    filter="url(#waveGlow)"
+                >
+
+                    <path
+                        d="M-100 245
+                           C100 315, 260 190, 450 250
+                           S720 320, 930 245
+                           S1200 180, 1430 255
+                           S1650 310, 1750 250"
+                        stroke="url(#wavePurple)"
+                        stroke-width="1.5"
+                    />
+
+                    <path
+                        d="M-100 265
+                           C100 335, 260 210, 450 270
+                           S720 340, 930 265
+                           S1200 200, 1430 275
+                           S1650 330, 1750 270"
+                        stroke="url(#wavePurple)"
+                        stroke-width="1"
+                    />
+
+                    <path
+                        d="M-100 285
+                           C100 355, 270 230, 460 290
+                           S730 360, 940 285
+                           S1210 220, 1440 295
+                           S1660 350, 1750 290"
+                        stroke="url(#wavePurple)"
+                        stroke-width="1"
+                    />
+                </g>
+
+<!-- =========================ENERGY POINTS========================== -->
+                <g class="wave-particles">
+
+                    <circle cx="120" cy="215" r="2"></circle>
+                    <circle cx="250" cy="275" r="1.5"></circle>
+                    <circle cx="390" cy="225" r="2"></circle>
+                    <circle cx="520" cy="285" r="1.5"></circle>
+                    <circle cx="670" cy="205" r="2"></circle>
+                    <circle cx="810" cy="265" r="1.5"></circle>
+                    <circle cx="960" cy="220" r="2"></circle>
+                    <circle cx="1100" cy="285" r="1.5"></circle>
+                    <circle cx="1240" cy="230" r="2"></circle>
+                    <circle cx="1390" cy="275" r="1.5"></circle>
+                    <circle cx="1510" cy="215" r="2"></circle>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+<!-- =========================HERO CONTAINER  ========================== -->
     <div class="hero-container container">
-
-        <!-- HERO CONTENT -->
-
+        <!-- =========================
+             LEFT SIDE
+        ========================== -->
         <div class="hero-content">
-            <span class="hero-eyebrow">
-                Your Technology Hub
-            </span>
+            <!-- =========================
+                 EYEBROW
+            ========================== -->
+            <div class="hero-eyebrow">
+                <span class="eyebrow-dot"></span>
+                <span class="eyebrow-text">
+                    YOUR TECHNOLOGY HUB
+                </span>
+                <span class="eyebrow-line"></span>
+            </div>
+<!-- =========================HERO TITLE========================== -->
             <h1 class="hero-title">
                 Powering Your
-                <span>Digital World.</span>
+                <span>
+                    Digital World.
+                </span>
             </h1>
+<!-- =========================DESCRIPTION========================== -->
+                 
+            
             <p class="hero-description">
-                Connectivity, computing, gaming, IT solutions,
-                digital services and technology products —
-                all under one roof.
+                <span class="description-line">
+                    Connectivity. Computing. Gaming. IT solutions.
+                </span>
+                <span class="description-line">
+                    Digital services &amp; technology products —
+                </span>
+                <span class="description-highlight">
+                    all under one roof.
+                </span>
             </p>
+<!------- =========================CTA BUTTONS========================== ------>
             <div class="hero-actions">
                 <a
                     href="#services"
@@ -212,6 +271,7 @@
                 >
                     Explore Services
                 </a>
+
                 <a
                     href="#products"
                     class="hero-btn hero-btn-secondary"
@@ -219,77 +279,238 @@
                     Browse Products
                 </a>
             </div>
+
+            <!-- =========================
+                 TRUST FEATURES
+            ========================== -->
+
+            <div class="hero-features">
+<!------------------------------ FEATURE 1 ----------------------------->
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M12 3L20 6V11C20 16.5 16.5 20 12 21C7.5 20 4 16.5 4 11V6L12 3Z"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linejoin="round"
+                            />
+
+                            <path
+                                d="M8.5 12L10.8 14.3L15.5 9.6"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <div class="hero-feature-content">
+                        <span class="hero-feature-title">
+                            Reliable Solutions
+                        </span>
+                        <span class="hero-feature-description">
+                            Built for performance
+                        </span>
+                    </div>
+                </div>
+
+<!----------------------------- FEATURE 2 -------------------------------->
+
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M13 2L4 13H11L10 22L20 10H13L13 2Z"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <div class="hero-feature-content">
+                        <span class="hero-feature-title">
+                            Latest Technology
+                        </span>
+                        <span class="hero-feature-description">
+                            Always up to date
+                        </span>
+                    </div>
+                </div>
+<!---------------------------- FEATURE 3 --------------------------->
+
+                <div class="hero-feature">
+                    <div class="hero-feature-icon">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M4 13V11C4 6.6 7.6 3 12 3C16.4 3 20 6.6 20 11V13"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                            />
+
+                            <path
+                                d="M4 12H3C2.4 12 2 12.4 2 13V17C2 17.6 2.4 18 3 18H4V12Z"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                            />
+
+                            <path
+                                d="M20 12H21C21.6 12 22 12.4 22 13V17C22 17.6 21.6 18 21 18H20V12Z"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                            />
+
+                            <path
+                                d="M20 18C20 20 18.2 21 16 21H14"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <div class="hero-feature-content">
+                        <span class="hero-feature-title">
+                            Expert Support
+                        </span>
+                        <span class="hero-feature-description">
+                            Here for you 24/7
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- WAVE TECHNOLOGY VISUAL -->
+        <!-- =========================
+             RIGHT SIDE
+             TECHNOLOGY VISUAL
+        ========================== -->
 
-        <div class="hero-visual">
-
-            <!-- ORBITS -->
-            <div class="tech-orbit tech-orbit-one"></div>
-            <div class="tech-orbit tech-orbit-two"></div>
-
-
-            <!-- CENTRAL CORE -->
-
-            <div class="tech-core">
-                <div class="tech-core-glow"></div>
-                <span class="tech-core-label">
-                    WAVE
-                </span>
-                <span class="tech-core-sub">
-                    TECHNOLOGY HUB
-                </span>
+        <div class="hero-visual" aria-hidden="true">
+<!------- =========================MAIN DIGITAL CURVE========================== -->
+            <div class="hero-curve">
+                <span class="curve-line curve-line-01"></span>
+                <span class="curve-line curve-line-02"></span>
+                <span class="curve-line curve-line-03"></span>
+                <span class="curve-line curve-line-04"></span>
+                <span class="curve-line curve-line-05"></span>
 
             </div>
+            <!-- =========================
+                 CURVE LIGHT
+            ========================== -->
 
-            <!-- COMPUTING -->
+            <div class="curve-light"></div>
 
-            <div class="tech-node tech-node-computing">
-                <span class="tech-node-icon">
-                    ⌘
-                </span>
-                <span>
-                    Computing
-                </span>
+<!------- =========================TECHNOLOGY PANEL========================== -->
+                 
+            <div class="hero-tech-panel">
+                <div class="hero-panel-glow"></div>
+                <div class="hero-panel-content">
+                    <span class="hero-panel-label">
+                        WAVE SYSTEM
+                    </span>
+                    <h3 class="hero-panel-title">
+                        WAVE TECHNOLOGY HUB
+                    </h3>
+                    <p class="hero-panel-subtitle">
+                        Cybersecurity · Digital Services · Gaming
+                    </p>
+                </div>
+                    <div class="hud-corner hud-corner-tl"></div>
+                    <div class="hud-corner hud-corner-tr"></div>
+                    <div class="hud-corner hud-corner-bl"></div>
+                    <div class="hud-corner hud-corner-br"></div>
+            </div>
+
+<!------- =========================TECHNOLOGY NODES========================== -->
+                <div class="hero-tech-nodes">
+                    <!-- =========================
+                        NODE CONNECTIONS
+                    ========================== -->
+                    <span
+                        class="node-connection connection-digital"
+                        aria-hidden="true"
+                    ></span>
+                    <span
+                        class="node-connection connection-gaming"
+                        aria-hidden="true"
+                    ></span>
+                    <span
+                        class="node-connection connection-cyber"
+                        aria-hidden="true"
+                    ></span>
+                    <!-- =========================
+                        DIGITAL HUB NODE
+                    ========================== -->
+
+                    <div class="hero-tech-node node-digital">
+                        <span class="node-dot"></span>
+                        <div class="node-info">
+                            <span class="node-label">
+                                DIGITAL HUB
+                            </span>
+                            <span class="node-status">
+                                CONNECT • CREATE
+                            </span>
+                        </div>
+                    </div>
+
+<!-------- =========================GAMING + TRAINING NODE ========================== -->
+                        
+                    <div class="hero-tech-node node-gaming">
+                        <span class="node-dot"></span>
+                        <div class="node-info">
+                            <span class="node-label">
+                                GAMING + TRAINING
+                            </span>
+                            <span class="node-status">
+                                PLAY • LEARN
+                            </span>
+                        </div>
+                    </div>
+
+<!--------- =========================CYBERSECURITY NODE========================== -->
+                    <div class="hero-tech-node node-cyber">
+                        <span class="node-dot"></span>
+                        <div class="node-info">
+                            <span class="node-label">
+                                CYBERSECURITY
+                            </span>
+                            <span class="node-status">
+                                SECURE • DEFEND
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
-            <!-- CONNECTIVITY -->
-
-            <div class="tech-node tech-node-network">
-                <span class="tech-node-icon">
-                    ◎
-                </span>
-
-                <span>
-                    Connectivity
-                </span>
-            </div>
-
-
-            <!-- GAMING -->
-
-            <div class="tech-node tech-node-gaming">
-                <span class="tech-node-icon">
-                    ◈
-                </span>
-                <span>
-                    Gaming
-                </span>
-            </div>
-
-
-            <!-- IT SERVICES -->
-
-            <div class="tech-node tech-node-services">
-                <span class="tech-node-icon">
-                    ⚙
-                </span>
-                <span>
-                    IT Services
-                </span>
-            </div>
+<!-- =========================DIGITAL PARTICLES ========================== -->
+            <span class="hero-particle particle-01"></span>
+            <span class="hero-particle particle-02"></span>
+            <span class="hero-particle particle-03"></span>
+            <span class="hero-particle particle-04"></span>
+            <span class="hero-particle particle-05"></span>
+            <span class="hero-particle particle-06"></span>
+            <span class="hero-particle particle-07"></span>
+            <span class="hero-particle particle-08"></span>
         </div>
     </div>
+
 </section>

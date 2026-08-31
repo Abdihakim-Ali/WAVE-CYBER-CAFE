@@ -19,75 +19,532 @@
 .hero-container {
     position: relative;
     z-index: 2;
-    display: flex;
+    display: grid;
+    grid-template-columns:
+        minmax(0, 0.92fr)
+        minmax(520px, 1.08fr);
     align-items: center;
-    min-height: calc(100vh - 80px);
-}
+    gap: 40px;
+    width: 100%;
 
+    /*
+       EXTRA BREATHING ROOM
+       FROM THE SCREEN EDGES
+    */
+    padding-left: 80px;
+    padding-right: 42px;
+    min-height:
+        calc(100vh - 80px);
+    transform: translate(18px);
+}
 
 /* =========================
    HERO CONTENT
 ========================= */
 
 .hero-content {
-    max-width: 760px;
-    margin-left: 120px;
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 5;
+    margin-left: 28px;
 }
 
 /* =========================
-   EYEBROW
+   HERO EYEBROW
 ========================= */
-
 .hero-eyebrow {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 7px 12px;
-    color: var(--clr-primary);
-    background: rgba(0, 200, 255, 0.08);
-    border: 1px solid rgba(0, 200, 255, 0.18);
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 9px 15px 9px 12px;
+    color: #dff8ff;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 200, 255, 0.10),
+            rgba(0, 200, 255, 0.025)
+        );
+    border: 1px solid rgba(0, 200, 255, 0.38);
     border-radius: 999px;
-    font-size: 0.75rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:
+        0 0 20px rgba(0, 200, 255, 0.06),
+        inset 0 0 18px rgba(0, 200, 255, 0.025);
+    overflow: hidden;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    animation:
+        eyebrowFloat 5s ease-in-out infinite;
 }
 
 /* =========================
-   TITLE
+   ENERGY DOT
+========================= */
+
+.eyebrow-dot {
+    position: relative;
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #00c8ff;
+    box-shadow:
+        0 0 6px #00c8ff,
+        0 0 15px rgba(0, 200, 255, 0.8),
+        0 0 28px rgba(0, 200, 255, 0.4);
+    animation:
+        eyebrowPulse 2s ease-in-out infinite;
+}
+
+/* =========================
+   DOT OUTER RING
+========================= */
+
+.eyebrow-dot::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border: 1px solid rgba(0, 200, 255, 0.25);
+    border-radius: 50%;
+    animation:
+        eyebrowRing 2s ease-out infinite;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.eyebrow-text {
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   ENERGY LINE
+========================= */
+
+.eyebrow-line {
+    position: relative;
+    width: 22px;
+    height: 1px;
+    margin-left: 2px;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 200, 255, 0),
+            #00c8ff
+        );
+    box-shadow:
+        0 0 8px rgba(0, 200, 255, 0.6);
+}
+
+/* =========================
+   MOVING LIGHT
+========================= */
+
+.hero-eyebrow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80px;
+    width: 60px;
+    height: 100%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.16),
+            transparent
+        );
+    transform: skewX(-20deg);
+    animation:
+        eyebrowScan 4s ease-in-out infinite;
+}
+
+/* =========================
+   FLOAT
+========================= */
+
+@keyframes eyebrowFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+
+/* =========================
+   DOT PULSE
+========================= */
+
+@keyframes eyebrowPulse {
+
+    0%,
+    100% {
+        transform: scale(0.85);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   ENERGY RING
+========================= */
+
+@keyframes eyebrowRing {
+
+    0% {
+        transform: scale(0.6);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   SCANNING LIGHT
+========================= */
+
+@keyframes eyebrowScan {
+
+    0%,
+    35% {
+        left: -80px;
+    }
+
+    65%,
+    100% {
+        left: 120%;
+    }
+}
+
+/* =========================
+   HERO TITLE
 ========================= */
 
 .hero-title {
+    position: relative;
     margin: 0;
-    color: var(--clr-white);
+    max-width: 720px;
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 7vw, 6rem);
-    font-weight: 600;
-    line-height: 1.05;
-    letter-spacing: -2px;
-}
-
-.hero-title span {
-    display: block;
-    color: var(--clr-primary);
-    text-shadow:
-        0 0 30px rgba(0, 200, 255, 0.18);
+    /* Smaller and more refined */
+    font-size: clamp(3.9rem, 6.3vw, 5rem);
+    font-weight: 700;
+    line-height: 1.04;
+    /* Orbitron needs breathing room */
+    letter-spacing: -1.8px;
+    color: var(--clr-white);
+    text-wrap: balance;
+    /* Subtle entrance */
+    animation:
+        heroTitleReveal
+        1.1s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        both;
+     text-shadow:
+        0 0 30px rgba(255, 255, 255, 0.025);
 }
 
 /* =========================
-   DESCRIPTION
+   DIGITAL WORLD
+========================= */
+
+.hero-title span {
+    position: relative;
+    display: inline-block;
+    margin-top: 6px;
+    /* Give Orbitron's glyphs room */
+    padding-right: 8px;
+    background:
+        linear-gradient(
+            105deg,
+            #00c8ff 0%,
+            #20d6ff 28%,
+            #5ee7ff 52%,
+            #6fa8ff 74%,
+            #8b5cf6 100%
+        );
+    background-size: 180% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter:
+        drop-shadow(
+            0 0 14px rgba(0, 200, 255, 0.12)
+        );
+    animation:
+        heroGradientFlow
+        8s
+        ease-in-out
+        infinite;
+}
+
+/* =========================
+   DIGITAL WORLD ENERGY TRACE
+========================= */
+
+.hero-title span::after {
+    content: "";
+    position: absolute;
+    left: 1px;
+    bottom: -10px;
+    width: 42%;
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            #00c8ff 0%,
+            rgba(0, 200, 255, 0.35) 45%,
+            transparent 100%
+        );
+    box-shadow:
+        0 0 8px rgba(0, 200, 255, 0.45);
+
+    opacity: 0.75;
+}
+
+/* =========================
+   TITLE REVEAL
+========================= */
+
+@keyframes heroTitleReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.985);
+
+        filter: blur(9px);
+    }
+
+    65% {
+        opacity: 1;
+
+        filter: blur(1px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+}
+
+
+/* =========================
+   GRADIENT FLOW
+========================= */
+
+@keyframes heroGradientFlow {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+
+        filter:
+            drop-shadow(
+                0 0 14px rgba(0, 200, 255, 0.10)
+            );
+    }
+
+    50% {
+        background-position: 100% 50%;
+
+        filter:
+            drop-shadow(
+                0 0 22px rgba(0, 200, 255, 0.17)
+            );
+    }
+}
+
+/* =========================
+   HERO DESCRIPTION
 ========================= */
 
 .hero-description {
-    max-width: 620px;
-    margin-top: 28px;
-    color: var(--clr-text);
-    font-size: 1.05rem;
-    line-height: 1.8;
+    position: relative;
+    max-width: 590px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding-left: 20px;
+    color: rgba(220, 232, 240, 0.68);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 400;
+
+    /* LIGHTER / MORE ELEGANT */
+    font-weight: 350;
+    line-height: 1.75;
+    letter-spacing: 0.15px;
+    animation:
+        heroDescriptionReveal
+        1s
+        0.25s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        both;
 }
 
 /* =========================
-   ACTIONS
+   DESCRIPTION ACCENT
+========================= */
+
+.hero-description::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 2px;
+    height: 76px;
+    background:
+        linear-gradient(
+            to bottom,
+            #00c8ff 0%,
+            rgba(0, 200, 255, 0.45) 55%,
+            transparent 100%
+        );
+
+    box-shadow:
+        0 0 10px rgba(0, 200, 255, 0.35);
+    opacity: 0.6;
+}
+
+/* =========================
+   DESCRIPTION LINES
+========================= */
+
+.description-line {
+    display: block;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+/* =========================
+   FINAL BRAND STATEMENT
+========================= */
+
+.description-highlight {
+    display: block;
+    margin-top: 5px;
+    color: rgba(225, 247, 255, 0.86);
+    font-weight:400;
+    letter-spacing: 0.35px;
+    text-shadow:
+        0 0 18px rgba(0, 200, 255, 0.08);
+}
+
+/* =========================
+   SUBTLE CYAN ACCENT
+========================= */
+
+.description-highlight::after {
+    content: "";
+    display: inline-block;
+    width: 26px;
+    height: 1px;
+    margin-left: 10px;
+    vertical-align: middle;
+    background:
+        linear-gradient(
+            90deg,
+            #00c8ff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 7px rgba(0, 200, 255, 0.45);
+    opacity: 0.7;
+}
+
+/* =========================
+   DESCRIPTION REVEAL
+========================= */
+
+@keyframes heroDescriptionReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter: blur(0);
+    }
+}
+
+/* =========================
+   DESCRIPTION SPANS
+========================= */
+
+.hero-description .description-line {
+    display: block;
+    margin-top: 0;
+    color: rgba(220, 232, 240, 0.68);
+    font-weight: 400;
+}
+
+.hero-description .description-line + .description-line {
+    margin-top: 4px;
+}
+
+/* =========================
+   FINAL BRAND STATEMENT
+========================= */
+
+.hero-description .description-highlight {
+    display: block;
+    margin-top: 5px;
+    color: rgba(225, 247, 255, 0.86);
+    font-weight: 500;
+    letter-spacing: 0.35px;
+    text-shadow:
+        0 0 18px rgba(0, 200, 255, 0.08);
+}
+
+/* =========================
+   HERO ACTIONS
 ========================= */
 
 .hero-actions {
@@ -95,59 +552,310 @@
     align-items: center;
     gap: 14px;
     margin-top: 36px;
+    width: auto;
 }
 
+/* =========================
+   HERO TRUST FEATURES
+========================= */
+
+.hero-features {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 34px;
+    padding-top: 2px;
+}
+
+/* =========================
+   FEATURE ITEM
+========================= */
+
+.hero-feature {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding-right: 24px;
+    margin-right: 24px;
+    border-right:
+        1px solid rgba(255, 255, 255, 0.10);
+    transition:
+        transform 0.3s ease;
+}
+
+/* =========================
+   LAST FEATURE
+========================= */
+
+.hero-feature:last-child {
+    padding-right: 0;
+    margin-right: 0;
+    border-right: none;
+}
+
+/* =========================
+   FEATURE ICON
+========================= */
+
+.hero-feature-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 11px;
+    color: var(--clr-primary);
+    background:
+        rgba(0, 200, 255, 0.035);
+    border:
+        1px solid rgba(0, 200, 255, 0.16);
+    border-radius: 9px;
+    transition: color 0.3s ease, border-color 0.3s ease, 
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* =========================
+   FEATURE ICON SVG
+========================= */
+
+.hero-feature-icon svg {
+    width: 19px;
+    height: 19px;
+}
+
+/* =========================
+   FEATURE CONTENT
+========================= */
+
+.hero-feature-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* =========================
+   FEATURE TITLE
+========================= */
+
+.hero-feature-title {
+    color: var(--clr-white);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* =========================
+   FEATURE DESCRIPTION
+========================= */
+
+.hero-feature-description {
+    color: var(--clr-text-muted);
+    font-size: 0.68rem;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* =========================
+   FEATURE HOVER
+========================= */
+
+.hero-feature:hover {
+    transform: translateY(-2px);
+}
+
+.hero-feature:hover .hero-feature-icon {
+    color: var(--clr-primary);
+    border-color:
+        rgba(0, 200, 255, 0.38);
+    background:
+        rgba(0, 200, 255, 0.07);
+    box-shadow:
+        0 0 18px rgba(0, 200, 255, 0.08);
+    transform:
+        translateY(-1px);
+}
+
+/* =========================
+   FEATURE ENTRANCE
+========================= */
+
+@keyframes heroFeaturesIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
 
 /* =========================
    BUTTONS
 ========================= */
 
 .hero-btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 48px;
-    padding: 0 22px;
+    min-height: 50px;
+    padding: 0 24px;
     border-radius: var(--radius-sm);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
+    letter-spacing: 0.15px;
     text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
     transition:
-        transform 0.3s ease,
-        background-color 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        color 0.3s ease;
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        color 0.35s ease;
 }
 
-/* Primary */
+
+/* =========================
+   PRIMARY CTA
+========================= */
 
 .hero-btn-primary {
-    color: var(--clr-white);
-    background: var(--clr-primary);
-    border: 1px solid var(--clr-primary);
+    color: #031218;
+    background:
+        linear-gradient(
+            135deg,
+            #19c8ef 0%,
+            #32d5f5 55%,
+            #59dff7 100%
+        );
+
+    border: 1px solid rgba(107, 231, 250, 0.85);
+    box-shadow:
+        0 5px 18px rgba(0, 200, 255, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    text-shadow: none;
 }
+
+
+/* =========================
+   PRIMARY HOVER
+========================= */
 
 .hero-btn-primary:hover {
     transform: translateY(-3px);
+    background:
+        linear-gradient(
+            135deg,
+            #27d0f3 0%,
+            #43d9f5 55%,
+            #69e5fa 100%
+        );
+
+    border-color:
+        rgba(130, 238, 255, 0.95);
     box-shadow:
-        0 10px 30px rgba(0, 200, 255, 0.22);
+        0 8px 24px rgba(0, 200, 255, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
-
-/* Secondary */
+/* =========================
+   SECONDARY CTA
+========================= */
 
 .hero-btn-secondary {
-    color: var(--clr-text);
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    color:
+        rgba(220, 232, 241, 0.84);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20, 29, 48, 0.72),
+            rgba(13, 22, 40, 0.58)
+        );
+
+    border:
+        1px solid rgba(116, 139, 169, 0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
+.hero-btn-primary::after {
+    content: "→";
+    margin-left: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.7;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.hero-btn-primary:hover::after {
+    transform: translateX(3px);
+    opacity: 1;
+}
+
+.hero-btn-secondary::after {
+    content: "↗";
+    margin-left: 10px;
+    font-size: 0.85rem;
+    opacity: 0.45;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.hero-btn-secondary:hover::after {
+    transform: translate(2px, -2px);
+    opacity: 0.85;
+}
+
+/* =========================
+   SECONDARY HOVER
+========================= */
+
 .hero-btn-secondary:hover {
-    color: var(--clr-white);
-    border-color: rgba(0, 200, 255, 0.4);
+    color: #e8faff;
     transform: translateY(-3px);
-    background: rgba(0, 200, 255, 0.05);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20, 40, 58, 0.82),
+            rgba(15, 28, 47, 0.72)
+        );
+    border-color:
+        rgba(0, 200, 255, 0.42);
+    box-shadow:
+        0 7px 22px rgba(0, 200, 255, 0.07),
+        inset 0 1px 0 rgba(100, 225, 255, 0.08);
+}
+
+/* =========================
+   ACTIVE
+========================= */
+
+.hero-btn:active {
+    transform: translateY(-1px);
+}
+
+/* =========================
+   FOCUS
+========================= */
+
+.hero-btn:focus-visible {
+    outline: 2px solid rgba(0, 200, 255, 0.55);
+    outline-offset: 4px;
 }
 
 /* =========================
@@ -191,7 +899,6 @@
         );
 }
 
-
 /* =========================
    ATMOSPHERIC GLOWS
 ========================= */
@@ -214,7 +921,6 @@
     right: 5%;
     background: var(--clr-primary);
 }
-
 
 /* PURPLE GLOW */
 
@@ -241,287 +947,6 @@
     }
 }
 
-/* =========================
-   WAVE DIGITAL CORE SYSTEM
-========================= */
-
-.hero-visual {
-    position: relative;
-    width: 560px;
-    height: 560px;
-    flex-shrink: 0;
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    isolation: isolate;
-}
-
-
-/* =========================
-   CORE ATMOSPHERE
-========================= */
-
-.hero-visual::before {
-    content: "";
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background:
-        radial-gradient(
-            circle,
-            rgba(0, 200, 255, 0.12) 0%,
-            rgba(0, 200, 255, 0.05) 35%,
-            rgba(139, 92, 246, 0.035) 55%,
-            transparent 72%
-        );
-    filter: blur(8px);
-    animation:
-        coreAtmosphere
-        6s
-        ease-in-out
-        infinite;
-    pointer-events: none;
-    z-index: 0;
-}
-
-
-@keyframes coreAtmosphere {
-
-    0%,
-    100% {
-        transform: scale(0.95);
-        opacity: 0.65;
-    }
-
-    50% {
-        transform: scale(1.08);
-        opacity: 1;
-    }
-}
-
-
-/* =========================
-   ORBIT BASE
-========================= */
-
-.tech-orbit {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    transform-origin: center;
-    z-index: 1;
-}
-
-
-/* =========================
-   INNER CYAN ORBIT
-========================= */
-
-.tech-orbit-one {
-    width: 310px;
-    height: 310px;
-    border:
-        1px solid rgba(0, 200, 255, 0.30);
-    box-shadow:
-        0 0 20px rgba(0, 200, 255, 0.05),
-        inset 0 0 20px rgba(0, 200, 255, 0.025);
-    animation:
-        orbitFloatOne
-        10s
-        ease-in-out
-        infinite;
-}
-
-
-/* =========================
-   MIDDLE ORBIT
-========================= */
-
-.tech-orbit-one::after {
-    content: "";
-    position: absolute;
-    inset: 22px;
-    border-radius: 50%;
-    border:
-        1px dashed rgba(0, 200, 255, 0.12);
-    animation: orbitRotateOne 18s linear infinite;
-}
-
-
-/* =========================
-   OUTER PURPLE ORBIT
-========================= */
-
-.tech-orbit-two {
-    width: 450px;
-    height: 450px;
-    border:
-        1px solid rgba(139, 92, 246, 0.22);
-    box-shadow:
-        0 0 35px rgba(139, 92, 246, 0.04),
-        inset 0 0 35px rgba(139, 92, 246, 0.025);
-    animation: orbitRotateTwo 26s linear infinite reverse;
-}
-
-/* =========================
-   ORBIT ROTATION
-========================= */
-
-@keyframes orbitRotateOne {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-@keyframes orbitRotateTwo {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* =========================
-   OUTER DASHED ORBIT
-========================= */
-
-.tech-orbit-two::after {
-    content: "";
-    position: absolute;
-    inset: 30px;
-    border-radius: 50%;
-    border:
-        1px dashed rgba(0, 200, 255, 0.10);
-    animation:
-        orbitDashTwo
-        28s
-        linear
-        infinite reverse;
-}
-
-
-/* =========================
-   ORBIT ENERGY POINTS
-========================= */
-
-.tech-orbit-one::before,
-.tech-orbit-two::before {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--clr-primary);
-    box-shadow:
-        0 0 8px var(--clr-primary),
-        0 0 22px rgba(0, 200, 255, 0.65),
-        0 0 45px rgba(0, 200, 255, 0.25);
-    animation:
-        orbitEnergyPulse
-        2.5s
-        ease-in-out
-        infinite;
-}
-
-
-/* INNER ENERGY POINT */
-
-.tech-orbit-one::before {
-    top: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-
-/* OUTER ENERGY POINT */
-
-.tech-orbit-two::before {
-    top: 50%;
-    right: -4px;
-    background: #8b5cf6;
-    box-shadow:
-        0 0 8px #8b5cf6,
-        0 0 22px rgba(139, 92, 246, 0.6),
-        0 0 45px rgba(139, 92, 246, 0.25);
-
-    animation-delay: -1.2s;
-}
-
-/* =========================
-   ORBIT DASH MOTION
-========================= */
-
-@keyframes orbitDashOne {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-@keyframes orbitDashTwo {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* =========================
-   ENERGY PULSE
-========================= */
-
-@keyframes orbitEnergyPulse {
-
-    0%,
-    100% {
-        transform: scale(0.75);
-        opacity: 0.55;
-    }
-
-    50% {
-        transform: scale(1.35);
-        opacity: 1;
-    }
-}
-
-
-/* =========================
-   ENERGY POINT PULSE
-========================= */
-
-@keyframes orbitPointPulse {
-
-    0%,
-    100% {
-        opacity: 0.45;
-        scale: 0.75;
-    }
-
-    50% {
-        opacity: 1;
-        scale: 1.35;
-    }
-}
 
 /* =========================
    DIGITAL WAVE BACKGROUND
@@ -530,7 +955,7 @@
 .digital-wave-field {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -30px;
     width: 100%;
     height: 360px;
     z-index: 1;
@@ -552,376 +977,1314 @@
         );
 }
 
+/* =========================================================
+   HERO RIGHT VISUAL
+   ========================================================= */
 
-/* =========================
-   BASE DIGITAL WAVE
-========================= */
-
-.digital-wave-line {
-    position: absolute;
-    left: -5%;
-    width: 110%;
-    height: 200px;
-    border-radius: 50%;
-    pointer-events: none;
-    transform-origin: center;
-}
-
-
-/* =========================
-   CYAN WAVE 1
-   FOREGROUND
-========================= */
-
-.wave-line-one {
-    bottom: 95px;
-    height: 190px;
-    border-top:
-        2px solid rgba(0, 200, 255, 0.85);
-    box-shadow:
-        0 -2px 14px rgba(0, 200, 255, 0.35);
-    opacity: 1;
-    transform:
-        rotate(-2deg)
-        scaleX(1.08);
-    animation:
-        digitalWaveOne
-        9s
-        ease-in-out
-        infinite;
-}
-
-/* =========================
-   CYAN WAVE 2
-   MIDGROUND
-========================= */
-
-.wave-line-two {
-    bottom: 75px;
-    height: 220px;
-    border-top:
-        2px solid rgba(0, 200, 255, 0.55);
-    box-shadow:
-        0 -2px 12px rgba(0, 200, 255, 0.25);
-    opacity: 0.65;
-    transform:
-        rotate(2deg)
-        scaleX(1.12);
-    animation:
-        digitalWaveTwo
-        12s
-        ease-in-out
-        infinite;
-}
-
-/* =========================
-   PURPLE WAVE
-   BACKGROUND
-========================= */
-
-.wave-line-three {
-    bottom: 55px;
-    height: 250px;
-    border-top:
-        2px solid rgba(139, 92, 246, 0.60);
-    box-shadow:
-        0 -2px 16px rgba(139, 92, 246, 0.30);
-    opacity: 0.45;
-    transform:
-        rotate(-1deg)
-        scaleX(1.15);
-    animation:
-        digitalWaveThree
-        15s
-        ease-in-out
-        infinite;
-}
-
-/* =========================
-   CYAN WAVE 1 MOTION
-========================= */
-
-@keyframes digitalWaveOne {
-
-    0%,
-    100% {
-        transform:
-            translateX(-3%)
-            rotate(-2deg)
-            scaleX(1.08);
-    }
-
-    50% {
-        transform:
-            translateX(3%)
-            rotate(2deg)
-            scaleX(1.12);
-    }
-}
-
-
-/* =========================
-   CYAN WAVE 2 MOTION
-========================= */
-
-@keyframes digitalWaveTwo {
-
-    0%,
-    100% {
-        transform:
-            translateX(3%)
-            rotate(2deg)
-            scaleX(1.12);
-    }
-
-    50% {
-        transform:
-            translateX(-3%)
-            rotate(-2deg)
-            scaleX(1.08);
-    }
-}
-
-
-/* =========================
-   PURPLE WAVE MOTION
-========================= */
-
-@keyframes digitalWaveThree {
-
-    0%,
-    100% {
-        transform:
-            translateX(-4%)
-            rotate(-1deg)
-            scaleX(1.15);
-    }
-
-    50% {
-        transform:
-            translateX(4%)
-            rotate(1deg)
-            scaleX(1.18);
-    }
-}
-
-/* =========================
-   TECHNOLOGY NODES
-========================= */
-
-.tech-node {
-    position: absolute;
+.hero-visual {
+    position: relative;
+    width: 100%;
+    height: 620px;
+    min-width: 0;
     display: flex;
     align-items: center;
-    gap: 7px;
-    padding: 7px 10px;
-    color: rgba(220, 235, 245, 0.78);
-    background:
-        rgba(5, 12, 24, 0.55);
-    border:
-        1px solid rgba(0, 200, 255, 0.12);
-    border-radius: 6px;
-    font-family: var(--font-body);
-    font-size: 0.72rem;
-    font-weight: 500;
-    white-space: nowrap;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow:
-        0 0 18px rgba(0, 200, 255, 0.035);
-    z-index: 4;
-    transition:
-        color 0.3s ease,
-        border-color 0.3s ease,
-        background-color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
-}
-
-
-/* =========================
-   NODE ICON
-========================= */
-
-.tech-node-icon {
-    display: inline-flex;
-    align-items: center;
     justify-content: center;
-    width: 18px;
-    height: 18px;
-    color: var(--clr-primary);
-    font-size: 0.9rem;
-    text-shadow:
-        0 0 8px rgba(0, 200, 255, 0.45);
+    margin-left: 20px;
+    z-index: 4;
+    isolation: isolate;
+    overflow: visible;
 }
 
+/* =========================================================
+   MAIN DIGITAL CURVE
+   ========================================================= */
+.hero-curve {
+    position: absolute;
+    width: 500px;
+    height: 500px;
 
-/* =========================
-   COMPUTING
-========================= */
+    top: 46%;
+    left: 50%;
 
-.tech-node-computing {
-    top: 21%;
-    right: 11%;
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0, 200, 255, 0.35))
+        drop-shadow(0 0 25px rgba(0, 200, 255, 0.12));
+
     animation:
-        nodeFloatOne
-        6s
+        heroCurveFloat
+        10s
         ease-in-out
         infinite;
 }
 
+/* =========================================================
+   CURVE LINES
+   ========================================================= */
 
-/* =========================
-   CONNECTIVITY
-========================= */
+.curve-line {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            var(--clr-bg),
+            var(--clr-bg)
+        ) padding-box,
 
-.tech-node-network {
-    top: 43%;
-    left: 3%;
+        linear-gradient(
+            145deg,
+            transparent 5%,
+            #00c8ff 28%,
+            #168cff 48%,
+            #8b5cf6 72%,
+            transparent 94%
+        ) border-box;
+    pointer-events: none;
+}
+
+/* =========================================================
+   MAIN CURVE
+   ========================================================= */
+
+.curve-line-one {
+    transform:
+        rotate(-18deg)
+        scaleX(0.72);
+    opacity: 0.95;
+    filter:
+        drop-shadow(
+            0 0 10px rgba(0, 200, 255, 0.7)
+        );
+}
+
+/* =========================================================
+   SECOND CURVE
+   ========================================================= */
+
+.curve-line-two {
+    transform:
+        rotate(-18deg)
+        scaleX(0.76)
+        translateX(18px);
+    opacity: 0.42;
+    border-width: 1px;
+    filter:
+        drop-shadow(
+            0 0 8px rgba(0, 200, 255, 0.4)
+        );
+}
+
+/* =========================================================
+   THIRD CURVE
+   ========================================================= */
+.curve-line-three {
+    transform:
+        rotate(-18deg)
+        scaleX(0.81)
+        translateX(38px);
+    opacity: 0.18;
+    border-width: 1px;
+}
+
+/* =========================================================
+   CURVE LIGHT
+   ========================================================= */
+.curve-light {
+    position: absolute;
+    width: 390px;
+    height: 390px;
+    top: 46%;
+    left: 50%;
+    transform:
+        translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 200, 255, 0.13) 0%,
+            rgba(0, 200, 255, 0.055) 28%,
+            rgba(139, 92, 246, 0.035) 45%,
+            transparent 72%
+        );
+    filter: blur(25px);
+    z-index: 0;
+    pointer-events: none;
     animation:
-        nodeFloatTwo
+        curveLightPulse
         7s
         ease-in-out
         infinite;
 }
 
-
-/* =========================
-   GAMING
-========================= */
-
-.tech-node-gaming {
-    right: 3%;
-    bottom: 22%;
-    animation:
-        nodeFloatThree
-        6.5s
-        ease-in-out
-        infinite;
-}
-
-
-/* =========================
-   IT SERVICES
-========================= */
-
-.tech-node-services {
-    bottom: 19%;
-    left: 10%;
-    animation:
-        nodeFloatFour
-        8s
-        ease-in-out
-        infinite;
-}
-
-
-/* =========================
-   NODE HOVER
-========================= */
-
-.tech-node:hover {
-    color: var(--clr-white);
-    background:
-        rgba(0, 200, 255, 0.08);
-    border-color:
-        rgba(0, 200, 255, 0.38);
-    box-shadow:
-        0 0 12px rgba(0, 200, 255, 0.12),
-        0 0 30px rgba(0, 200, 255, 0.05);
-    transform: translateY(-3px);
-}
-
-
-/* =========================
-   NODE ENERGY DOT
-========================= */
-
-.tech-node::before {
-    content: "";
+/* =========================================================
+   DIGITAL PARTICLES
+   ========================================================= */
+.hero-particle {
     position: absolute;
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: var(--clr-primary);
+    background: #00c8ff;
     box-shadow:
-        0 0 6px var(--clr-primary),
-        0 0 14px rgba(0, 200, 255, 0.45);
+        0 0 6px #00c8ff,
+        0 0 14px rgba(0, 200, 255, 0.65);
+    z-index: 3;
+    pointer-events: none;
+    animation:
+        particleFloat
+        5s
+        ease-in-out
+        infinite;
+}
+
+/* =========================================================
+   PARTICLE POSITIONS
+   ========================================================= */
+.particle-01 {
+    top: 17%;
+    left: 25%;
+}
+.particle-02 {
+    top: 27%;
+    right: 14%;
+    animation-delay:
+        -1s;
+}
+.particle-03 {
+    top: 42%;
+    left: 12%;
+    animation-delay:
+        -2s;
+}
+.particle-04 {
+    top: 55%;
+    right: 8%;
+    animation-delay:
+        -3s;
+}
+.particle-05 {
+    bottom: 23%;
+    left: 22%;
+    animation-delay:
+        -1.5s;
+}
+.particle-06 {
+    bottom: 13%;
+    right: 22%;
+    animation-delay:
+        -3.5s;
+}
+.particle-07 {
+    top: 11%;
+    right: 32%;
+    width: 3px;
+    height: 3px;
+    animation-delay:
+        -2.2s;
+}
+.particle-08 {
+    bottom: 31%;
+    left: 10%;
+    width: 3px;
+    height: 3px;
+    animation-delay:
+        -4s;
+}
+
+@keyframes heroCurveFloat {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            rotate(1.2deg);
+    }
+}
+
+/* =========================================================
+   CURVE LIGHT ANIMATION
+   ========================================================= */
+
+@keyframes curveLightPulse {
+    0%,
+    100% {
+
+        opacity: 0.55;
+
+        transform:
+            translate(-50%, -50%)scale(0.95);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform:
+            translate(-50%, -50%)
+            scale(1.05);
+    }
+}
+
+/* =========================================================
+   PARTICLE ANIMATION
+   ========================================================= */
+@keyframes particleFloat {
+
+    0%,
+    100% {
+
+        opacity: 0.25;
+
+        transform:
+            translateY(0);
+
+    }
+    50% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-10px);
+    }
+}
+
+/* =========================================================
+   NEXUS CORE — PREMIUM PANEL
+   ========================================================= */
+
+.hero-tech-panel {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    width: 250px;
+    min-height: 170px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    isolation: isolate;
+    border: 1px solid rgba(0, 200, 255, 0.30);
+    border-radius: 18px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 18, 32, 0.97),
+            rgba(3, 9, 20, 0.96)
+        );
+    box-shadow:
+        0 0 0 1px rgba(0, 200, 255, 0.035),
+        0 0 24px rgba(0, 200, 255, 0.08),
+        0 0 55px rgba(0, 200, 255, 0.045),
+        inset 0 0 35px rgba(0, 200, 255, 0.025),
+        inset 0 1px 0 rgba(255, 255, 255, 0.055);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    overflow: hidden;
+}
+
+/* =========================================================
+   NEXUS CORE PANEL
+   ========================================================= */
+
+.hero-tech-panel {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    width: 225px;
+    min-height: 150px;
+    transform:
+        translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    isolation: isolate;
+    border:
+        1px solid rgba(0, 200, 255, 0.30);
+    border-radius: 16px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 18, 32, 0.97),
+            rgba(3, 9, 19, 0.94)
+        );
+    box-shadow:
+
+        /* outer definition */
+        0 0 0 1px rgba(0, 200, 255, 0.025),
+        /* restrained cyan aura */
+        0 0 20px rgba(0, 200, 255, 0.075),
+        /* deeper atmosphere */
+        0 0 55px rgba(0, 200, 255, 0.045),
+        /* internal glass depth */
+        inset 0 0 25px rgba(0, 200, 255, 0.028),
+        /* top glass edge */
+        inset 0 1px 0 rgba(255, 255, 255, 0.055);
+    backdrop-filter:
+        blur(16px);
+    -webkit-backdrop-filter:
+        blur(16px);
+    overflow: visible;
+}
+
+
+/* =========================================================
+   CORE HUD OUTER RING
+   ========================================================= */
+
+.hero-tech-panel::before {
+    content: "";
+    position: absolute;
+    inset: -28px;
+    border:
+        1px solid rgba(0, 200, 255, 0.065);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    box-shadow:
+        0 0 25px rgba(0, 200, 255, 0.035);
+    animation:
+        coreHudRotate
+        18s
+        linear
+        infinite;
+}
+
+@keyframes coreEnergyPulse {
+    0%,
+    100% {
+        opacity: 0.38;
+        transform:
+            translate(-50%, -50%)
+            scale(0.92);
+    }
+
+    50% {
+        opacity: 0.72;
+        transform:
+            translate(-50%, -50%)
+            scale(1.06);
+    }
+}
+
+
+@keyframes coreHudRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   NEXUS CORE — AMBIENT ENERGY
+   ========================================================= */
+
+.hero-panel-glow {
+    position: absolute;
+    width: 155px;
+    height: 155px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.16) 0%,
+            rgba(0, 220, 255, 0.20) 12%,
+            rgba(0, 200, 255, 0.11) 30%,
+            rgba(70, 130, 255, 0.055) 48%,
+            rgba(139, 92, 246, 0.035) 62%,
+            transparent 76%
+        );
+
+    filter: blur(14px);
+    z-index: 0;
+    pointer-events: none;
+    animation:
+        nexusCoreGlow
+        4.5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes nexusCoreGlow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform:
+            translate(-50%, -50%)
+            scale(0.92);
+    }
+
+    50% {
+        opacity: 0.55;
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+}
+
+@keyframes nexusCorePulse {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(0.94);
+
+        opacity: 0.72;
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.06);
+
+        opacity: 0.92;
+    }
+}
+
+/* =========================================================
+   NEXUS CORE ORBIT RINGS
+   ========================================================= */
+
+.hero-panel-content {
+    isolation: isolate;
+}
+
+.hero-panel-content::marker {
+    display: none;
+}
+
+/* =========================================================
+   PHASE 3 — NEXUS CORE INTERIOR
+   ========================================================= */
+
+.hero-panel-content {
+    position: relative;
+    width: 100%;
+    min-height: 150px;
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 3;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   INTERNAL HUD FRAME
+   ========================================================= */
+
+.hero-panel-content::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border:
+        1px solid rgba(0, 200, 255, 0.055);
+    border-radius: 11px;
+    pointer-events: none;
+    box-shadow:
+        inset 0 0 18px rgba(0, 200, 255, 0.018);
+}
+
+
+/* =========================================================
+   CORE SCAN LINE
+   ========================================================= */
+
+.hero-panel-content::after {
+    content: "";
+    position: absolute;
+    left: 12%;
+    top: -20%;
+    width: 76%;
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 200, 255, 0.42),
+            rgba(255, 255, 255, 0.55),
+            rgba(0, 200, 255, 0.42),
+            transparent
+        );
+    box-shadow:
+        0 0 8px rgba(0, 200, 255, 0.35);
+    opacity: 0.35;
+    animation:
+        coreScan
+        5s
+        ease-in-out
+        infinite;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CORE SCAN
+   ========================================================= */
+
+@keyframes coreScan {
+
+    0% {
+        top: -10%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.45;
+    }
+
+    50% {
+        opacity: 0.30;
+    }
+
+    85% {
+        opacity: 0.45;
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   NEXUS ENERGY CORE
+   ========================================================= */
+
+.hero-panel-glow {
+    width: 125px;
+    height: 125px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.10) 0%,
+            rgba(0, 220, 255, 0.13) 10%,
+            rgba(0, 200, 255, 0.07) 28%,
+            rgba(70, 130, 255, 0.035) 48%,
+            transparent 70%
+        );
+
+    filter: blur(13px);
+    opacity: 0.48;
+    animation:
+        nexusCoreGlow
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   CORE ENERGY DOT
+   ========================================================= */
+
+.hero-panel-glow::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 9px;
+    height: 9px;
+    transform:
+        translate(-50%, -50%);
+    border-radius: 50%;
+    background: #dffaff;
+    box-shadow:
+        0 0 6px #ffffff,
+        0 0 14px #00c8ff,
+        0 0 30px rgba(0, 200, 255, 0.65);
+    animation:
+        nexusCorePulse
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   CORE ENERGY RING
+   ========================================================= */
+
+.hero-panel-glow::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 48px;
+    height: 48px;
+    transform:
+        translate(-50%, -50%);
+    border:
+        1px solid rgba(0, 200, 255, 0.28);
+    border-radius: 50%;
+    box-shadow:
+        0 0 12px rgba(0, 200, 255, 0.12);
+    animation:
+        nexusCoreRing
+        6s
+        linear
+        infinite;
+}
+
+/* =========================================================
+   CORE RING ROTATION
+   ========================================================= */
+
+@keyframes nexusCoreRing {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg)
+            scale(0.92);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            rotate(180deg)
+            scale(1.05);
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg)
+            scale(0.92);
+    }
+}
+
+/* =========================================================
+   NEXUS HUD CORNER MARKERS
+   ========================================================= */
+
+.hero-tech-panel {
+    --hud-size: 13px;
+    --hud-color: rgba(0, 200, 255, 0.48);
+}
+
+.hero-tech-panel > .hud-corner {
+    position: absolute;
+    width: var(--hud-size);
+    height: var(--hud-size);
+    pointer-events: none;
+    z-index: 4;
+}
+
+.hero-tech-panel > .hud-corner::before,
+.hero-tech-panel > .hud-corner::after {
+    content: "";
+    position: absolute;
+    background: var(--hud-color);
+    box-shadow:
+        0 0 6px rgba(0, 200, 255, 0.25);
+}
+
+/* TOP LEFT */
+
+.hud-corner-tl {
+    top: 9px;
+    left: 9px;
+}
+
+.hud-corner-tl::before {
+    width: 100%;
+    height: 1px;
+}
+
+.hud-corner-tl::after {
+    width: 1px;
+    height: 100%;
+}
+
+/* TOP RIGHT */
+
+.hud-corner-tr {
+    top: 9px;
+    right: 9px;
+    transform: rotate(90deg);
+}
+
+/* BOTTOM LEFT */
+
+.hud-corner-bl {
+    bottom: 9px;
+    left: 9px;
+    transform: rotate(-90deg);
+}
+
+/* BOTTOM RIGHT */
+
+.hud-corner-br {
+    bottom: 9px;
+    right: 9px;
+    transform: rotate(180deg);
+}
+
+/* =========================================================
+   PANEL LABEL
+   ========================================================= */
+
+.hero-panel-label {
+    position: relative;
+    margin-bottom: 9px;
+    padding: 4px 9px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #00c8ff;
+    background:
+        rgba(0, 200, 255, 0.045);
+    border:
+        1px solid rgba(0, 200, 255, 0.15);
+    border-radius: 999px;
+    text-shadow:
+        0 0 8px rgba(0, 200, 255, 0.7);
+    box-shadow:
+        0 0 12px rgba(0, 200, 255, 0.035);
+}
+
+
+/* =========================================================
+   SMALL STATUS DOT
+   ========================================================= */
+
+.hero-panel-label::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-right: 7px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: #00c8ff;
+    box-shadow:
+        0 0 5px #00c8ff,
+        0 0 10px rgba(0, 200, 255, 0.65);
+    animation:
+        panelStatusPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+/* =========================================================
+   PANEL TITLE
+   ========================================================= */
+.hero-panel-title {
+    position: relative;
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: 0.035em;
+    color: #ffffff;
+    text-shadow:
+        0 0 12px rgba(255, 255, 255, 0.12),
+        0 0 25px rgba(0, 200, 255, 0.14);
+}
+
+/* =========================================================
+   TITLE CYAN ACCENT
+   ========================================================= */
+.hero-panel-title::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 1px;
+    margin: 10px auto 0;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00c8ff,
+            transparent
+        );
+    box-shadow:
+        0 0 7px rgba(0, 200, 255, 0.65);
+}
+
+/* =========================================================
+   PANEL SUBTITLE
+   ========================================================= */
+.hero-panel-subtitle {
+    margin-top: 10px;
+    margin-bottom: 0;
+    max-width: 215px;
+    font-size: 10px;
+    line-height: 1.65;
+    letter-spacing: 0.095em;
+    text-transform: uppercase;
+    color:
+        rgba(180, 210, 225, 0.62);
+}
+
+/* =========================================================
+   PANEL BOTTOM STATUS
+   ========================================================= */
+
+.hero-panel-content::after {
+    content: "CONNECT • SECURE • INNOVATE";
+    margin-top: 16px;
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color:
+        rgba(0, 200, 255, 0.42);
+    text-shadow:
+        0 0 8px rgba(0, 200, 255, 0.25);
+}
+
+/* =========================================================
+   PANEL GLOW ANIMATION
+   ========================================================= */
+
+@keyframes panelGlowPulse {
+
+    0%,
+    100% {
+        opacity: 0.42;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+    }
+
+    50% {
+        opacity: 0.88;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+}
+
+
+/* =========================================================
+   PANEL STATUS PULSE
+   ========================================================= */
+
+@keyframes panelStatusPulse {
+
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scale(0.85);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+/* =========================================================
+   TECHNOLOGY NODE SYSTEM
+   ========================================================= */
+
+.hero-tech-nodes {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   INDIVIDUAL NODE
+   ========================================================= */
+
+.hero-tech-node {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 38px;
+    padding: 7px 12px;
+    border:
+        1px solid rgba(0, 200, 255, 0.28);
+    border-radius: 999px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 20, 35, 0.88),
+            rgba(4, 12, 25, 0.76)
+        );
+    box-shadow:
+        0 0 12px rgba(0, 200, 255, 0.10),
+        0 0 25px rgba(0, 200, 255, 0.035),
+        inset 0 0 12px rgba(0, 200, 255, 0.035),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    white-space: nowrap;
+    z-index: 3;
+    transform:
+        translate(-50%, -50%);
+    animation:
+        nodeFloat
+        6s
+        ease-in-out
+        infinite;
+}
+
+/* =========================================================
+   NODE DOT
+   ========================================================= */
+
+.node-dot {
+    position: relative;
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #00c8ff;
+    box-shadow:
+        0 0 5px #00c8ff,
+        0 0 12px rgba(0, 200, 255, 0.75),
+        0 0 22px rgba(0, 200, 255, 0.35);
+    animation:
+        nodePulse
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+/* =========================================================
+   NODE DOT OUTER SIGNAL
+   ========================================================= */
+
+.node-dot::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border:
+        1px solid rgba(0, 200, 255, 0.22);
+    border-radius: 50%;
+    animation:
+        nodeRing
+        2.5s
+        ease-out
+        infinite;
+}
+
+/* =========================================================
+   NODE INFORMATION
+   ========================================================= */
+
+.node-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* =========================================================
+   NODE LABEL
+   ========================================================= */
+
+.node-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color:
+        rgba(225, 245, 255, 0.92);
+    text-shadow:
+        0 0 10px rgba(0, 200, 255, 0.12);
+}
+
+/* =========================================================
+   NODE STATUS
+   ========================================================= */
+.node-status {
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color:
+        rgba(0, 200, 255, 0.62);
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   NODE POSITIONS
+   ========================================================= */
+
+/* CYBERSECURITY — TOP */
+
+.node-cyber {
+    top: 21%;
+    left: 50%;
+}
+
+/* DIGITAL HUB — LOWER LEFT */
+
+.node-digital {
+    top: 72%;
+    left: 25%;
+}
+
+/* GAMING + TRAINING — LOWER RIGHT */
+
+.node-gaming {
+    top: 72%;
+    left: 77%;
+}
+
+/* =========================================================
+   NODE FLOATING MOTION
+   ========================================================= */
+
+@keyframes nodeFloat {
+
+    0%,
+    100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -4px;
+    }
+}
+
+/* =========================================================
+   NODE PULSE
+   ========================================================= */
+
+@keyframes nodePulse {
+
+    0%,
+    100% {
+        opacity: 0.65;
+
+        transform:
+            scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scale(1.12);
+    }
+}
+
+/* =========================================================
+   NODE RING
+   ========================================================= */
+
+@keyframes nodeRing {
+
+    0% {
+        transform:
+            scale(0.55);
+
+        opacity: 0.65;
+    }
+
+    100% {
+        transform:
+            scale(1.5);
+
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   BASE NODE CONNECTION
+   ========================================================= */
+
+.node-connection {
+    position: absolute;
+    display: block;
+    height: 1px;
+    transform-origin: left center;
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(0, 200, 255, 0.18) 8%,
+            rgba(0, 200, 255, 0.65) 32%,
+            rgba(0, 200, 255, 0.95) 50%,
+            rgba(139, 92, 246, 0.58) 78%,
+            transparent 100%
+        );
+    box-shadow:
+        0 0 5px rgba(0, 200, 255, 0.55),
+        0 0 12px rgba(0, 200, 255, 0.18);
+    opacity: 0.78;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* =========================================================
+   CYBERSECURITY → HUB
+   ========================================================= */
+
+.connection-cyber {
+    width: 145px;
+    top: 33%;
+    left: 50%;
+    transform:
+        rotate(90deg);
+}
+
+/* =========================================================
+   HUB → DIGITAL HUB
+   ========================================================= */
+
+.connection-digital {
+    width: 175px;
+    top: 58%;
+    left: 43%;
+    transform:
+        rotate(151deg);
+}
+
+/* =========================================================
+   HUB → GAMING + TRAINING
+   ========================================================= */
+
+.connection-gaming {
+    width: 175px;
+    top: 58%;
+    left: 57%;
+    transform:
+        rotate(29deg);
+}
+
+/* =========================================================
+   CONNECTION CORE
+   ========================================================= */
+
+.node-connection::before {
+    content: "";
+    position: absolute;
+    left: 48%;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    transform:
+        translate(-50%, -50%);
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:
+        0 0 5px #ffffff,
+        0 0 10px #00c8ff,
+        0 0 18px rgba(0, 200, 255, 0.65);
     opacity: 0.75;
+    animation:
+        connectionCorePulse
+        2.4s
+        ease-in-out
+        infinite;
 }
 
+/* =========================================================
+   DATA FLOW
+   ========================================================= */
 
-/* LEFT NODES */
-
-.tech-node-network::before,
-.tech-node-services::before {
-    right: -3px;
+.node-connection::after {
+    content: "";
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left: -22px;
+    width: 22px;
+    height: 2px;
+    transform:
+        translateY(-50%);
+    border-radius: 999px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.95),
+            #00c8ff,
+            transparent
+        );
+    box-shadow:
+        0 0 6px #00c8ff,
+        0 0 12px rgba(0, 200, 255, 0.75);
+    animation:
+        nodeDataFlow
+        2.8s
+        linear
+        infinite;
 }
 
+/* =========================================================
+   CONNECTION CORE PULSE
+   ========================================================= */
 
-/* RIGHT NODES */
-
-.tech-node-computing::before,
-.tech-node-gaming::before {
-    left: -3px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-
-/* =========================
-   NODE FLOAT ANIMATIONS
-========================= */
-
-@keyframes nodeFloatOne {
+@keyframes connectionCorePulse {
 
     0%,
     100% {
-        transform: translateY(0);
+        opacity: 0.35;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.7);
     }
 
     50% {
-        transform: translateY(-6px);
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.25);
     }
 }
 
+/* =========================================================
+   DATA FLOW ANIMATION
+   ========================================================= */
 
-@keyframes nodeFloatTwo {
+@keyframes nodeDataFlow {
 
-    0%,
+    0% {
+        left: -22px;
+
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    78% {
+        opacity: 1;
+    }
+
     100% {
-        transform: translateY(0);
-    }
+        left: calc(100% - 4px);
 
-    50% {
-        transform: translateY(5px);
-    }
-}
-
-
-@keyframes nodeFloatThree {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-
-@keyframes nodeFloatFour {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(6px);
+        opacity: 0;
     }
 }
