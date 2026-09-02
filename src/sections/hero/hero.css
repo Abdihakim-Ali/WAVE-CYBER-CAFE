@@ -35,7 +35,7 @@
     padding-right: 42px;
     min-height:
         calc(100vh - 80px);
-    transform: translate(18px);
+    transform: translate(0);
 }
 
 /* =========================
@@ -2287,4 +2287,52 @@
 
         opacity: 0;
     }
+}
+
+/* =========================================================
+   LARGE DESKTOP — 27" / QHD
+   ========================================================= */
+
+@media (min-width: 1440px) {
+
+    .hero-container {
+        padding-left: 90px;
+        padding-right: 70px;
+        gap: 60px;
+        transform: translateX(0);
+    }
+
+    .hero-content {
+        max-width: 760px;
+        margin-left: 20px;
+    }
+
+    .hero-title {
+        font-size: clamp(4.2rem, 5.2vw, 5rem);
+    }
+
+    .hero-description {
+        max-width: 620px;
+    }
+
+    .hero-visual {
+        height: 680px;
+        margin-left: 0;
+    }
+
+    .hero-curve {
+        width: 540px;
+        height: 540px;
+    }
+
+    .curve-light {
+        width: 420px;
+        height: 420px;
+    }
+
+    .hero-tech-panel {
+        width: 260px;
+        min-height: 175px;
+    }
+
 }

@@ -24,7 +24,7 @@ async function loadSection(id, path) {
     }
 }
 
-loadSection("navbar", "/src/sections/navbar/navbar.html");
-loadSection("hero", "/src/sections/hero/hero.html");
+loadSection("navbar", "./src/sections/navbar/navbar.html");
+loadSection("hero", "./src/sections/hero/hero.html");
 
 console.log("🌊 Wave Technology Hub");
