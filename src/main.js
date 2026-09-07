@@ -1,6 +1,9 @@
 import "./css/main.css";
 
-async function loadSection(id, path) {
+import navbarHtml from "./sections/navbar/navbar.html?raw";
+import heroHtml from "./sections/hero/hero.html?raw";
+
+function loadSection(id, html) {
     const container = document.getElementById(id);
 
     if (!container) {
@@ -8,23 +11,10 @@ async function loadSection(id, path) {
         return;
     }
 
-    try {
-        const response = await fetch(path);
-
-        if (!response.ok) {
-            throw new Error(`Failed to load ${path}`);
-        }
-
-        const html = await response.text();
-
-        container.innerHTML = html;
-
-    } catch (error) {
-        console.error(error);
-    }
+    container.innerHTML = html;
 }
 
-loadSection("navbar", "./src/sections/navbar/navbar.html");
-loadSection("hero", "./src/sections/hero/hero.html");
+loadSection("navbar", navbarHtml);
+loadSection("hero", heroHtml);
 
 console.log("🌊 Wave Technology Hub");
