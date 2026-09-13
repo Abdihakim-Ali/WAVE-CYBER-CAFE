@@ -1,17 +1,119 @@
 :root {
+    /* =========================================
+       WAVE TECHNOLOGY HUB
+       GLOBAL DESIGN TOKENS
+    ========================================= */
+
+    /* Brand */
     --clr-primary: #00c8ff;
+    --clr-accent-purple: #6d5ef8;
+
+    /* =========================================
+       BACKGROUND
+    ========================================= */
+
     --clr-bg: #070b14;
+    --clr-bg-secondary: #0b1220;
+
+    /* =========================================
+       SURFACES
+    ========================================= */
+
     --clr-surface: #111827;
+    --clr-surface-hover: #172235;
+
+    /* =========================================
+       TEXT
+    ========================================= */
 
     --clr-white: #ffffff;
-    --clr-text: #a8b3c7;
+    --clr-text: #f1f5f9;
+    --clr-text-secondary: #a8b3c7;
     --clr-text-muted: #6b7280;
-    --clr-accent-purple: #6d5ef8;
+
+    /* =========================================
+       BORDERS
+    ========================================= */
+
+    --clr-border: rgba(148, 163, 184, 0.14);
+    --clr-border-hover: rgba(0, 200, 255, 0.35);
+
+    /* =========================================
+       ATMOSPHERE
+    ========================================= */
+
+    --clr-grid: rgba(0, 200, 255, 0.055);
+
+    --clr-glow-cyan: rgba(0, 200, 255, 0.14);
+    --clr-glow-purple: rgba(109, 94, 248, 0.12);
+
+    /* =========================================
+       TYPOGRAPHY
+    ========================================= */
 
     --font-heading: "Orbitron", sans-serif;
     --font-body: "Poppins", sans-serif;
 
+    /* =========================================
+       BORDER RADIUS
+    ========================================= */
+
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 18px;
+
+    /* =========================================
+       THEME
+    ========================================= */
+
+    color-scheme: dark;
+}
+
+
+/* =================================================
+   ☀️ LIGHT MODE
+================================================= */
+
+@media (prefers-color-scheme: light) {
+
+    :root {
+
+        /* Background */
+        --clr-bg: #f4f8fc;
+        --clr-bg-secondary: #eaf2f9;
+
+        /* Surfaces */
+        --clr-surface: #ffffff;
+        --clr-surface-hover: #f1f7fc;
+
+        /* Text */
+        --clr-white: #0f172a;
+        --clr-text: #172033;
+        --clr-text-secondary: #475569;
+        --clr-text-muted: #64748b;
+
+        /* Borders */
+        --clr-border: rgba(15, 23, 42, 0.10);
+        --clr-border-hover: rgba(0, 157, 214, 0.35);
+
+        /* Atmosphere */
+        --clr-grid: rgba(0, 120, 180, 0.055);
+
+        --clr-glow-cyan: rgba(0, 200, 255, 0.10);
+        --clr-glow-purple: rgba(109, 94, 248, 0.07);
+
+        color-scheme: light;
+    }
+}
+
+
+/* =================================================
+   SMOOTH THEME TRANSITIONS
+================================================= */
+
+html,
+body {
+    transition:
+        background-color 0.45s ease,
+        color 0.45s ease;
 }
