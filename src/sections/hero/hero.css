@@ -87,27 +87,6 @@
 }
 
 /* =========================
-   HERO EYEBROW — LIGHT MODE
-========================= */
-
-@media (prefers-color-scheme: light) {
-
-    .hero-eyebrow {
-        color: #16405c;
-        background:
-            linear-gradient(
-                135deg,
-                rgba(0, 200, 255, 0.075),
-                rgba(255, 255, 255, 0.70)
-            );
-        border-color: rgba(0, 157, 214, 0.28);
-        box-shadow:
-            0 0 20px rgba(0, 120, 180, 0.035),
-            inset 0 0 18px rgba(255, 255, 255, 0.65);
-    }
-}
-
-/* =========================
    ENERGY DOT
 ========================= */
 
@@ -149,7 +128,6 @@
     z-index: 2;
     white-space: nowrap;
 }
-
 
 /* =========================
    ENERGY LINE
@@ -197,44 +175,30 @@
    EYEBROW DETAILS — LIGHT MODE
 ========================= */
 
-@media (prefers-color-scheme: light) {
+[data-theme="light"] .eyebrow-text {
+    color: #16405c;
+    text-shadow: none;
+}
 
-    /* =========================
-       TEXT
-    ========================= */
-    .eyebrow-text {
-        color: #16405c;
-        text-shadow: none;
-    }
+[data-theme="light"] .eyebrow-line {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 157, 214, 0),
+            #009dd6
+        );
+    box-shadow:
+        0 0 7px rgba(0, 157, 214, 0.28);
+}
 
-    /* =========================
-       ENERGY LINE
-    ========================= */
-
-    .eyebrow-line {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(0, 157, 214, 0),
-                #009dd6
-            );
-        box-shadow:
-            0 0 7px rgba(0, 157, 214, 0.28);
-    }
-
-    /* =========================
-       MOVING LIGHT
-    ========================= */
-
-    .hero-eyebrow::after {
-        background:
-            linear-gradient(
-                90deg,
-                transparent,
-                rgba(0, 157, 214, 0.12),
-                transparent
-            );
-    }
+[data-theme="light"] .hero-eyebrow::after {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 157, 214, 0.12),
+            transparent
+        );
 }
 
 /* =========================
@@ -252,7 +216,6 @@
         transform: translateY(-2px);
     }
 }
-
 
 /* =========================
    DOT PULSE
@@ -318,9 +281,9 @@
     max-width: 720px;
     font-family: var(--font-heading);
     /* Smaller and more refined */
-    font-size: clamp(3.9rem, 6.3vw, 5rem);
+    font-size:clamp(4.2rem, 5.2vw, 5rem);
     font-weight: 700;
-    line-height: 1.04;
+    line-height: 1.02;
     /* Orbitron needs breathing room */
     letter-spacing: -1.8px;
     color: var(--clr-white);
@@ -339,13 +302,10 @@
    HERO TITLE — LIGHT MODE
 ========================= */
 
-@media (prefers-color-scheme: light) {
-
-    .hero-title {
-        color: #0f172a;
-        text-shadow:
-            0 0 24px rgba(15, 23, 42, 0.035);
-    }
+[data-theme="light"] .hero-title {
+    color: #0f172a;
+    text-shadow:
+        0 0 24px rgba(15, 23, 42, 0.035);
 }
 
 /* =========================
@@ -485,25 +445,21 @@
    HERO DESCRIPTION — LIGHT MODE
 ========================= */
 
-@media (prefers-color-scheme: light) {
+[data-theme="light"] .hero-description {
+    color: #3f4f63;
+    font-weight: 600;
+    text-shadow: none;
+}
 
-    .hero-description {
-        color: #3f4f63;
-        font-weight: 600;
-        text-shadow: none;
-    }
+[data-theme="light"] .hero-description .description-line {
+    color: #3f4f63 !important;
+    font-weight: 500;
+}
 
-    .hero-description .description-line {
-        color: #3f4f63 !important;
-        font-weight: 500;
-    }
-
-    .hero-description .description-highlight {
-        color: #0f172a !important;
-        text-shadow:
-            0 0 24px rgba(15, 23, 42, 0.035);
-    }
-
+[data-theme="light"] .hero-description .description-highlight {
+    color: #0f172a !important;
+    text-shadow:
+        0 0 24px rgba(15, 23, 42, 0.035);
 }
 
 /* =========================
@@ -646,67 +602,72 @@
     width: auto;
 }
 
- /* =========================
-    HERO BUTTONS — LIGHT MODE
- ========================= */
+/* =========================
+   HERO BUTTONS — LIGHT MODE
+========================= */
 
- @media (prefers-color-scheme: light) {
+[data-theme="light"] .hero-btn-primary {
+    color: #06202b;
+    background:
+        linear-gradient(
+            135deg,
+            #12bfe9 0%,
+            #2dceef 55%,
+            #55d9f3 100%
+        );
 
-     .hero-btn-primary {
-         color: #06202b;
-         background:
-             linear-gradient(
-                 135deg,
-                 #12bfe9 0%,
-                 #2dceef 55%,
-                 #55d9f3 100%
-             );
+    border-color: rgba(0, 157, 214, 0.45);
+    box-shadow:
+        0 6px 18px rgba(0, 120, 180, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
 
-         border-color: rgba(0, 157, 214, 0.45);
-         box-shadow:
-             0 6px 18px rgba(0, 120, 180, 0.12),
-             inset 0 1px 0 rgba(255, 255, 255, 0.45);
-     }
+[data-theme="light"] .hero-btn-primary:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #20c9ec 0%,
+            #3bd3ef 55%,
+            #64def4 100%
+        );
 
-     .hero-btn-primary:hover {
-         background:
-             linear-gradient(
-                 135deg,
-                 #20c9ec 0%,
-                 #3bd3ef 55%,
-                 #64def4 100%
-             );
-         border-color: rgba(0, 140, 195, 0.55);
-         box-shadow:
-             0 9px 24px rgba(0, 120, 180, 0.16),
-             inset 0 1px 0 rgba(255, 255, 255, 0.55);
-     }
+    border-color: rgba(0, 140, 195, 0.55);
 
-     .hero-btn-secondary {
-         color: #29445a;
-         background:
-             rgba(255, 255, 255, 0.72);
-         border-color:
-             rgba(15, 23, 42, 0.14);
-         box-shadow:
-             0 4px 14px rgba(15, 23, 42, 0.045),
-             inset 0 1px 0 rgba(255, 255, 255, 0.8);
-         backdrop-filter: blur(10px);
-         -webkit-backdrop-filter: blur(10px);
-     }
+    box-shadow:
+        0 9px 24px rgba(0, 120, 180, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
 
-     .hero-btn-secondary:hover {
-         color: #0f3b5f;
-         background:
-             rgba(255, 255, 255, 0.92);
-         border-color:
-             rgba(0, 157, 214, 0.30);
-         box-shadow:
-             0 8px 20px rgba(15, 23, 42, 0.07),
-             inset 0 1px 0 rgba(255, 255, 255, 0.9);
-     }
+[data-theme="light"] .hero-btn-secondary {
+    color: #29445a;
+    background:
+        rgba(255, 255, 255, 0.72);
 
- }
+    border-color:
+        rgba(15, 23, 42, 0.14);
+
+    box-shadow:
+        0 4px 14px rgba(15, 23, 42, 0.045),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .hero-btn-secondary:hover {
+    color: #0f3b5f;
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    border-color:
+        rgba(0, 157, 214, 0.30);
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
 /* =========================
    HERO TRUST FEATURES
 ========================= */
@@ -854,34 +815,30 @@
    HERO FEATURE ICONS — LIGHT MODE
 ========================= */
 
-@media (prefers-color-scheme: light) {
+[data-theme="light"] .hero-feature-icon {
+    color: #69e5fa;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 200, 255, 0.075),
+            rgba(109, 94, 248, 0.055)
+        );
+    border-color:
+        rgba(20, 127, 209, 0.20);
+}
 
-    .hero-feature-icon {
-        color: #69e5fa 100%;
-        background:
-            linear-gradient(
-                135deg,
-                rgba(0, 200, 255, 0.075),
-                rgba(109, 94, 248, 0.055)
-            );
-        border-color:
-            rgba(20, 127, 209, 0.20);
-    }
-
-    .hero-feature:hover .hero-feature-icon {
-        color: #3569d4;
-        background:
-            linear-gradient(
-                135deg,
-                rgba(0, 200, 255, 0.11),
-                rgba(109, 94, 248, 0.09)
-            );
-        border-color:
-            rgba(20, 127, 209, 0.35);
-        box-shadow:
-            0 0 16px rgba(0, 157, 214, 0.09);
-    }
-
+[data-theme="light"] .hero-feature:hover .hero-feature-icon {
+    color: #3569d4;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 200, 255, 0.11),
+            rgba(109, 94, 248, 0.09)
+        );
+    border-color:
+        rgba(20, 127, 209, 0.35);
+    box-shadow:
+        0 0 16px rgba(0, 157, 214, 0.09);
 }
 
 /* =========================
@@ -2337,6 +2294,28 @@
 
         opacity: 0;
     }
+}
+
+/* =========================================================
+   HERO THEME TRANSITIONS
+   ========================================================= */
+
+.hero,
+.hero-eyebrow,
+.hero-title,
+.hero-description,
+.hero-feature,
+.hero-feature-title,
+.hero-feature-description,
+.hero-feature-icon,
+.hero-tech-panel,
+.hero-tech-node {
+    transition:
+        background-color 0.45s ease,
+        color 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease,
+        text-shadow 0.45s ease;
 }
 
 /* =========================================================

@@ -69,41 +69,37 @@
     color-scheme: dark;
 }
 
-
 /* =================================================
    ☀️ LIGHT MODE
 ================================================= */
 
-@media (prefers-color-scheme: light) {
+[data-theme="light"] {
 
-    :root {
+    /* Background */
+    --clr-bg: #f4f8fc;
+    --clr-bg-secondary: #eaf2f9;
 
-        /* Background */
-        --clr-bg: #f4f8fc;
-        --clr-bg-secondary: #eaf2f9;
+    /* Surfaces */
+    --clr-surface: #ffffff;
+    --clr-surface-hover: #f1f7fc;
 
-        /* Surfaces */
-        --clr-surface: #ffffff;
-        --clr-surface-hover: #f1f7fc;
+    /* Text */
+    --clr-white: #0f172a;
+    --clr-text: #172033;
+    --clr-text-secondary: #475569;
+    --clr-text-muted: #64748b;
 
-        /* Text */
-        --clr-white: #0f172a;
-        --clr-text: #172033;
-        --clr-text-secondary: #475569;
-        --clr-text-muted: #64748b;
+    /* Borders */
+    --clr-border: rgba(15, 23, 42, 0.10);
+    --clr-border-hover: rgba(0, 157, 214, 0.35);
 
-        /* Borders */
-        --clr-border: rgba(15, 23, 42, 0.10);
-        --clr-border-hover: rgba(0, 157, 214, 0.35);
+    /* Atmosphere */
+    --clr-grid: rgba(0, 120, 180, 0.055);
 
-        /* Atmosphere */
-        --clr-grid: rgba(0, 120, 180, 0.055);
+    --clr-glow-cyan: rgba(0, 200, 255, 0.10);
+    --clr-glow-purple: rgba(109, 94, 248, 0.07);
 
-        --clr-glow-cyan: rgba(0, 200, 255, 0.10);
-        --clr-glow-purple: rgba(109, 94, 248, 0.07);
-
-        color-scheme: light;
-    }
+    color-scheme: light;
 }
 
 
