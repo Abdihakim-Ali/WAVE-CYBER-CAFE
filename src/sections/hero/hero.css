@@ -12,10 +12,25 @@
     background: var(--clr-bg);
 }
 
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(0, 200, 255, 0.055),
+            transparent 42%
+        );
+    opacity: 0;
+    animation:heroAtmosphereReveal 3s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
 /* =========================
    HERO CONTAINER
 ========================= */
-
 .hero-container {
     position: relative;
     z-index: 2;
@@ -33,15 +48,13 @@
     */
     padding-left: 80px;
     padding-right: 42px;
-    min-height:
-        calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
     transform: translate(0);
 }
 
 /* =========================
    HERO CONTENT
 ========================= */
-
 .hero-content {
     position: relative;
     width: 100%;
@@ -82,8 +95,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    animation:
-        eyebrowFloat 5s ease-in-out infinite;
+    animation: eyebrowFloat 5s ease-in-out infinite;
 }
 
 /* =========================
@@ -101,8 +113,7 @@
         0 0 5px #00c8ff,
         0 0 12px rgba(0, 200, 255, 0.8),
         0 0 22px rgba(0, 200, 255, 0.4);
-    animation:
-        eyebrowPulse 2s ease-in-out infinite;
+    animation: eyebrowPulse 2s ease-in-out infinite;
 }
 
 /* =========================
@@ -211,7 +222,6 @@
     100% {
         transform: translateY(0);
     }
-
     50% {
         transform: translateY(-2px);
     }
@@ -228,13 +238,11 @@
         transform: scale(0.85);
         opacity: 0.7;
     }
-
     50% {
         transform: scale(1.15);
         opacity: 1;
     }
 }
-
 
 /* =========================
    ENERGY RING
@@ -246,13 +254,11 @@
         transform: scale(0.6);
         opacity: 0.7;
     }
-
     100% {
         transform: scale(1.5);
         opacity: 0;
     }
 }
-
 
 /* =========================
    SCANNING LIGHT
@@ -264,7 +270,6 @@
     35% {
         left: -80px;
     }
-
     65%,
     100% {
         left: 120%;
@@ -288,12 +293,6 @@
     letter-spacing: -1.8px;
     color: var(--clr-white);
     text-wrap: balance;
-    /* Subtle entrance */
-    animation:
-        heroTitleReveal
-        1.1s
-        cubic-bezier(0.22, 1, 0.36, 1)
-        both;
      text-shadow:
         0 0 30px rgba(255, 255, 255, 0.025);
 }
@@ -363,34 +362,6 @@
 }
 
 /* =========================
-   TITLE REVEAL
-========================= */
-
-@keyframes heroTitleReveal {
-
-    0% {
-        opacity: 0;
-        transform:
-            translateY(30px)
-            scale(0.985);
-        filter: blur(9px);
-    }
-
-    65% {
-        opacity: 1;
-        filter: blur(1px);
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-        filter: blur(0);
-    }
-}
-
-/* =========================
    GRADIENT FLOW
 ========================= */
 
@@ -404,7 +375,6 @@
                 0 0 14px rgba(0, 200, 255, 0.10)
             );
     }
-
     50% {
         background-position: 100% 50%;
         filter:
@@ -433,12 +403,6 @@
     font-weight: 350;
     line-height: 1.75;
     letter-spacing: 0.15px;
-    animation:
-        heroDescriptionReveal
-        1s
-        0.25s
-        cubic-bezier(0.22, 1, 0.36, 1)
-        both;
 }
 
 /* =========================
@@ -480,7 +444,6 @@
             rgba(0, 200, 255, 0.45) 55%,
             transparent 100%
         );
-
     box-shadow:
         0 0 10px rgba(0, 200, 255, 0.35);
     opacity: 0.6;
@@ -490,13 +453,11 @@
 /* =========================
    DESCRIPTION LINES
 ========================= */
-
 .description-line {
     display: block;
     transition:
         color 0.3s ease,
         transform 0.3s ease;
-
 }
 
 /* =========================
@@ -530,35 +491,9 @@
             #00c8ff,
             transparent
         );
-
     box-shadow:
         0 0 7px rgba(0, 200, 255, 0.45);
     opacity: 0.7;
-}
-
-/* =========================
-   DESCRIPTION REVEAL
-========================= */
-
-@keyframes heroDescriptionReveal {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(18px);
-
-        filter: blur(4px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-        filter: blur(0);
-    }
 }
 
 /* =========================
@@ -615,7 +550,6 @@
             #2dceef 55%,
             #55d9f3 100%
         );
-
     border-color: rgba(0, 157, 214, 0.45);
     box-shadow:
         0 6px 18px rgba(0, 120, 180, 0.12),
@@ -630,9 +564,7 @@
             #3bd3ef 55%,
             #64def4 100%
         );
-
     border-color: rgba(0, 140, 195, 0.55);
-
     box-shadow:
         0 9px 24px rgba(0, 120, 180, 0.16),
         inset 0 1px 0 rgba(255, 255, 255, 0.55);
@@ -642,27 +574,21 @@
     color: #29445a;
     background:
         rgba(255, 255, 255, 0.72);
-
     border-color:
         rgba(15, 23, 42, 0.14);
-
     box-shadow:
         0 4px 14px rgba(15, 23, 42, 0.045),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
-
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 
 [data-theme="light"] .hero-btn-secondary:hover {
     color: #0f3b5f;
-
     background:
         rgba(255, 255, 255, 0.92);
-
     border-color:
         rgba(0, 157, 214, 0.30);
-
     box-shadow:
         0 8px 20px rgba(15, 23, 42, 0.07),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -867,7 +793,6 @@
         color 0.35s ease;
 }
 
-
 /* =========================
    PRIMARY CTA
 ========================= */
@@ -881,7 +806,6 @@
             #32d5f5 55%,
             #59dff7 100%
         );
-
     border: 1px solid rgba(107, 231, 250, 0.85);
     box-shadow:
         0 5px 18px rgba(0, 200, 255, 0.10),
@@ -889,8 +813,7 @@
     text-shadow: none;
 }
 
-
-/* =========================
+/* ========================
    PRIMARY HOVER
 ========================= */
 
@@ -903,7 +826,6 @@
             #43d9f5 55%,
             #69e5fa 100%
         );
-
     border-color:
         rgba(130, 238, 255, 0.95);
     box-shadow:
@@ -924,13 +846,10 @@
             rgba(20, 29, 48, 0.72),
             rgba(13, 22, 40, 0.58)
         );
-
-    border:
-        1px solid rgba(116, 139, 169, 0.28);
+    border: 1px solid rgba(116, 139, 169, 0.28);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
 .hero-btn-primary::after {
@@ -1020,7 +939,7 @@
 .hero-grid {
     position: absolute;
     inset: 0;
-    opacity: 0.35;
+    opacity: 0;
     background-image:
         linear-gradient(
             rgba(0, 200, 255, 0.08) 1px,
@@ -1031,7 +950,7 @@
             rgba(0, 200, 255, 0.08) 1px,
             transparent 1px
         );
-
+    animation:heroGridReveal 2.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
     background-size: 55px 55px;
     mask-image:
         linear-gradient(
@@ -1054,7 +973,18 @@
     filter: blur(120px);
     opacity: 0.14;
     animation:
-        heroFloat 8s ease-in-out infinite;
+        heroGlowReveal 2.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards,
+        heroFloat 8s ease-in-out 3s infinite;
+}
+
+@keyframes heroGlowReveal {
+
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.12;
+    }
 }
 
 /* CYAN GLOW */
@@ -1071,7 +1001,6 @@
     bottom: -25%;
     left: 5%;
     background: var(--clr-accent-purple);
-    animation-delay: -4s;
 }
 
 /* =========================
@@ -1136,6 +1065,10 @@
     z-index: 4;
     isolation: isolate;
     overflow: visible;
+    opacity: 0;
+    transform: scale(0.985);
+    filter: blur(0);
+    animation: heroVisualReveal 3.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
 }
 
 /* =========================================================
@@ -1145,21 +1078,16 @@
     position: absolute;
     width: 500px;
     height: 500px;
-
     top: 46%;
     left: 50%;
-
     transform:
         translate(-50%, -50%);
-
     border-radius: 50%;
     z-index: 1;
     pointer-events: none;
-
     filter:
         drop-shadow(0 0 8px rgba(0, 200, 255, 0.35))
         drop-shadow(0 0 25px rgba(0, 200, 255, 0.12));
-
     animation:
         heroCurveFloat
         10s
@@ -1388,17 +1316,12 @@
 
     0%,
     100% {
-
         opacity: 0.25;
-
         transform:
             translateY(0);
-
     }
     50% {
-
         opacity: 1;
-
         transform:
             translateY(-10px);
     }
@@ -1431,7 +1354,6 @@
             rgba(3, 9, 19, 0.94)
         );
     box-shadow:
-
         /* outer definition */
         0 0 0 1px rgba(0, 200, 255, 0.025),
         /* restrained cyan aura */
@@ -1448,7 +1370,6 @@
         blur(16px);
     overflow: visible;
 }
-
 
 /* =========================================================
    CORE HUD OUTER RING
@@ -1472,11 +1393,38 @@
         infinite;
 }
 
+.hero-tech-panel::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -25%;
+    width: 12%;
+    height: 120%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 200, 255, 0.18),
+            rgba(120, 220, 255, 0.65),
+            rgba(0, 200, 255, 0.18),
+            transparent
+        );
+    filter: blur(3px);
+    transform: skewX(-18deg);
+    opacity: 0;
+    pointer-events: none;
+    animation:
+        waveStartupSweep
+        1.8s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        3.8s
+        forwards;
+}
+
 @keyframes coreHudRotate {
     from {
         transform: rotate(0deg);
     }
-
     to {
         transform: rotate(360deg);
     }
@@ -1485,7 +1433,6 @@
 /* =========================================================
    NEXUS CORE — AMBIENT ENERGY
    ========================================================= */
-
 .hero-panel-glow {
     position: absolute;
     width: 155px;
@@ -1504,7 +1451,6 @@
             rgba(139, 92, 246, 0.035) 62%,
             transparent 76%
         );
-
     filter: blur(14px);
     z-index: 0;
     pointer-events: none;
@@ -1512,6 +1458,7 @@
         nexusCoreGlow
         4.5s
         ease-in-out
+        3.6s
         infinite;
 }
 
@@ -1543,7 +1490,6 @@
 
         opacity: 0.72;
     }
-
     50% {
         transform:
             translate(-50%, -50%)
@@ -1583,7 +1529,6 @@
     overflow: hidden;
 }
 
-
 /* =========================================================
    INTERNAL HUD FRAME
    ========================================================= */
@@ -1605,24 +1550,19 @@
    ========================================================= */
 
 @keyframes coreScan {
-
     0% {
         top: -10%;
         opacity: 0;
     }
-
     15% {
         opacity: 0.45;
     }
-
     50% {
         opacity: 0.30;
     }
-
     85% {
         opacity: 0.45;
     }
-
     100% {
         top: 110%;
         opacity: 0;
@@ -1648,18 +1588,12 @@
         0 0 6px #ffffff,
         0 0 14px #00c8ff,
         0 0 30px rgba(0, 200, 255, 0.65);
-    animation:
-        nexusCorePulse
-        3s
-        ease-in-out
-        infinite;
+    animation: nexusCorePulse 3s ease-in-out infinite;
 }
-
 
 /* =========================================================
    CORE ENERGY RING
    ========================================================= */
-
 .hero-panel-glow::after {
     content: "";
     position: absolute;
@@ -1674,11 +1608,7 @@
     border-radius: 50%;
     box-shadow:
         0 0 12px rgba(0, 200, 255, 0.12);
-    animation:
-        nexusCoreRing
-        6s
-        linear
-        infinite;
+    animation: nexusCoreRing 6s linear infinite;
 }
 
 /* =========================================================
@@ -1686,21 +1616,18 @@
    ========================================================= */
 
 @keyframes nexusCoreRing {
-
     0% {
         transform:
             translate(-50%, -50%)
             rotate(0deg)
             scale(0.92);
     }
-
     50% {
         transform:
             translate(-50%, -50%)
             rotate(180deg)
             scale(1.05);
     }
-
     100% {
         transform:
             translate(-50%, -50%)
@@ -1800,7 +1727,6 @@
         0 0 12px rgba(0, 200, 255, 0.035);
 }
 
-
 /* =========================================================
    SMALL STATUS DOT
    ========================================================= */
@@ -1891,8 +1817,6 @@
         0 0 8px rgba(0, 200, 255, 0.25);
 }
 
-
-
 /* =========================================================
    PANEL STATUS PULSE
    ========================================================= */
@@ -1904,7 +1828,6 @@
         opacity: 0.55;
         transform: scale(0.85);
     }
-
     50% {
         opacity: 1;
         transform: scale(1.15);
@@ -1923,8 +1846,6 @@
     z-index: 6;
     pointer-events: none;
 }
-
-
 /* =========================================================
    INDIVIDUAL NODE
    ========================================================= */
@@ -1960,7 +1881,30 @@
         nodeFloat
         6s
         ease-in-out
+        3.6s
         infinite;
+}
+
+.hero-tech-nodes::after {
+    content: "";
+    position: absolute;
+    left: -10%;
+    top: -5%;
+    width: 120%;
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 200, 255, 0.05),
+            rgba(0, 220, 255, 0.55),
+            rgba(0, 200, 255, 0.05),
+            transparent
+        );
+    box-shadow: 0 0 14px rgba(0, 200, 255, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    animation:  waveNetworkScan  2s cubic-bezier(0.22, 1, 0.36, 1) 3.8s forwards;
 }
 
 /* =========================================================
@@ -1978,11 +1922,7 @@
         0 0 5px #00c8ff,
         0 0 12px rgba(0, 200, 255, 0.75),
         0 0 22px rgba(0, 200, 255, 0.35);
-    animation:
-        nodePulse
-        2.5s
-        ease-in-out
-        infinite;
+    animation:nodePulse 2.5s ease-in-out infinite;
 }
 
 /* =========================================================
@@ -1993,20 +1933,14 @@
     content: "";
     position: absolute;
     inset: -5px;
-    border:
-        1px solid rgba(0, 200, 255, 0.22);
+    border: 1px solid rgba(0, 200, 255, 0.22);
     border-radius: 50%;
-    animation:
-        nodeRing
-        2.5s
-        ease-out
-        infinite;
+    animation: nodeRing 2.5s ease-out infinite;
 }
 
 /* =========================================================
    NODE INFORMATION
    ========================================================= */
-
 .node-info {
     display: flex;
     flex-direction: column;
@@ -2021,10 +1955,8 @@
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.14em;
-    color:
-        rgba(225, 245, 255, 0.92);
-    text-shadow:
-        0 0 10px rgba(0, 200, 255, 0.12);
+    color: rgba(225, 245, 255, 0.92);
+    text-shadow: 0 0 10px rgba(0, 200, 255, 0.12);
 }
 
 /* =========================================================
@@ -2074,7 +2006,6 @@
     100% {
         margin-top: 0;
     }
-
     50% {
         margin-top: -4px;
     }
@@ -2089,11 +2020,9 @@
     0%,
     100% {
         opacity: 0.65;
-
         transform:
             scale(0.9);
     }
-
     50% {
         opacity: 1;
 
@@ -2111,14 +2040,11 @@
     0% {
         transform:
             scale(0.55);
-
         opacity: 0.65;
     }
-
     100% {
         transform:
             scale(1.5);
-
         opacity: 0;
     }
 }
@@ -2210,6 +2136,7 @@
         connectionCorePulse
         2.4s
         ease-in-out
+        3.6s
         infinite;
 }
 
@@ -2242,6 +2169,7 @@
         nodeDataFlow
         2.8s
         linear
+        3.6s
         infinite;
 }
 
@@ -2274,21 +2202,17 @@
    ========================================================= */
 
 @keyframes nodeDataFlow {
-
     0% {
         left: -22px;
 
         opacity: 0;
     }
-
     12% {
         opacity: 1;
     }
-
     78% {
         opacity: 1;
     }
-
     100% {
         left: calc(100% - 4px);
 
@@ -2362,6 +2286,84 @@
     .hero-tech-panel {
         width: 260px;
         min-height: 175px;
+    }
+
+}
+
+@keyframes heroVisualReveal {
+
+    0% {
+        opacity: 0;
+        transform: translateY(25px) scale(0.985);
+    }
+
+    45% {
+        opacity: 0.35;
+        transform: translateY(12px) scale(0.99);
+    }
+
+    75% {
+        opacity: 0.75;
+        transform: translateY(4px) scale(0.998);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+@keyframes heroAtmosphereReveal {
+
+    0% {
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 0.45;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+@keyframes heroGridReveal {
+
+    0% {
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 0.12;
+    }
+
+    100% {
+        opacity: 0.25;
+    }
+
+}
+
+@keyframes waveNetworkScan {
+
+    0% {
+        top: -5%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.7;
+    }
+
+    75% {
+        opacity: 0.45;
+    }
+
+    100% {
+        top: 105%;
+        opacity: 0;
     }
 
 }
