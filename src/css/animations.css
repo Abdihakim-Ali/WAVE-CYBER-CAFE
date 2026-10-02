@@ -41,19 +41,21 @@
 
 }
 
-/* ========================================
-   GLOBAL SCROLL REVEAL
-   ======================================== */
+/* =========================================
+   SCROLL REVEAL SYSTEM
+========================================= */
 
 .reveal {
     opacity: 0;
-    transform: translateY(35px) scale(0.985);
-    filter: blur(2px);
+    transform: translateY(45px) scale(0.985);
+    filter: blur(7px);
 
     transition:
-        opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 1s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.25s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1.25s cubic-bezier(0.22, 1, 0.36, 1);
+
+    will-change: opacity, transform, filter;
 }
 
 .reveal.is-visible {
@@ -62,10 +64,27 @@
     filter: blur(0);
 }
 
-.reveal-delay-1,
-.reveal-delay-2,
-.reveal-delay-3,
-.reveal-delay-4,
-.reveal-delay-5 {
+
+/* =========================================
+   REVEAL SEQUENCE
+========================================= */
+
+.reveal-delay-1 {
+    transition-delay: 0.15s;
+}
+
+.reveal-delay-2 {
     transition-delay: 0.35s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.55s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.75s;
+}
+
+.reveal-delay-5 {
+    transition-delay: 0.95s;
 }
