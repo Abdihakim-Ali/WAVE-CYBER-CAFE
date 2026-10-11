@@ -1,0 +1,1093 @@
+/* =========================================================
+   1. SECTION FOUNDATION
+========================================================= */
+.products {
+    --products-accent: #00e5ff;
+    --products-accent-rgb: 0, 229, 255;
+    --products-purple: #8b5cf6;
+    position: relative;
+    isolation: isolate;
+    padding: 120px 0 130px;
+    overflow: hidden;
+    background: var(--clr-bg);
+    color: var(--clr-text);
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
+}
+
+.products *,
+.products *::before,
+.products *::after {box-sizing: border-box;
+}
+
+/* =========================================================
+   2. BACKGROUND ATMOSPHERE
+========================================================= */
+.products-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+.products-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            rgba(var(--products-accent-rgb), 0.055) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(var(--products-accent-rgb), 0.055) 1px,
+            transparent 1px
+        );
+    background-size: 55px 55px;
+    opacity: 0.65;
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        #000 15%,
+        #000 75%,
+        transparent
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        #000 15%,
+        #000 75%,
+        transparent
+    );
+}
+
+/* Ambient background lights */
+.products-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.12;
+    animation: productsGlowFloat 12s ease-in-out infinite alternate;
+}
+
+.products-glow-one {
+    top: -180px;
+    right: -100px;
+    background: var(--products-accent);
+}
+
+.products-glow-two {
+    bottom: -260px;
+    left: -180px;
+    background: var(--products-purple);
+    animation-delay: -6s;
+}
+
+@keyframes productsGlowFloat {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(-35px, 30px, 0) scale(1.12);
+    }
+}
+
+/* =========================================================
+   3. MAIN CONTAINER
+========================================================= */
+.products-container {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, calc(100% - 48px));
+    margin-inline: auto;
+}
+
+/* =========================================================
+   4. SECTION HEADER
+========================================================= */
+.products-header {
+    max-width: 720px;
+    margin: 0 auto 65px;
+    text-align: center;
+}
+
+.products-overline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    margin-bottom: 24px;
+    padding: 9px 15px;
+    border: 1px solid rgba(var(--products-accent-rgb), 0.2);
+    border-radius: 100px;
+    background: rgba(var(--products-accent-rgb), 0.045);
+    color: var(--products-accent);
+    font-size: 0.73rem;
+    font-weight: 750;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+/* Live indicator */
+.products-live-dot {
+    position: relative;
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--products-accent);
+    box-shadow:
+        0 0 8px rgba(var(--products-accent-rgb), 0.9),
+        0 0 18px rgba(var(--products-accent-rgb), 0.5);
+}
+
+.products-live-dot::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border: 1px solid rgba(var(--products-accent-rgb), 0.5);
+    border-radius: 50%;
+    animation: productsDotPulse 2s ease-out infinite;
+}
+
+@keyframes productsDotPulse {
+    from {
+        transform: scale(0.6);
+        opacity: 0.9;
+    }
+    to {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* Main heading */
+.products-title {
+    margin: 0;
+    color: var(--clr-text);
+    font-size: clamp(2.6rem, 5.5vw, 4.7rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -2.8px;
+}
+
+.products-title span {
+    display: inline-block;
+    background: linear-gradient(
+        110deg,
+        #00e5ff 0%,
+        #5ffbf1 45%,
+        #8b5cf6 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Supporting text */
+.products-description {
+    max-width: 590px;
+    margin: 23px auto 0;
+    color: var(--clr-text-muted);
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.9;
+}
+
+/* =========================================================
+   5. FEATURED PRODUCTS SHOWCASE
+========================================================= */
+.products-showcase {
+    --showcase-radius: 26px;
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    min-height: 370px;
+    overflow: hidden;
+    border: 1px solid rgba(var(--products-accent-rgb), 0.2);
+    border-radius: var(--showcase-radius);
+    background:
+        radial-gradient(
+            ellipse at 78% 45%,
+            rgba(var(--products-accent-rgb), 0.11),
+            transparent 48%
+        ),
+        linear-gradient(
+            125deg,
+            #101820 0%,
+            #0b1119 48%,
+            #080d14 100%
+        );
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    transition:
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        transform 0.4s ease;
+}
+
+/* Animated border */
+.products-showcase::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+        120deg,
+        transparent 10%,
+        rgba(var(--products-accent-rgb), 0.7) 35%,
+        transparent 55%,
+        rgba(139, 92, 246, 0.35) 80%,
+        transparent
+    );
+    background-size: 250% 250%;
+    opacity: 0.35;
+    pointer-events: none;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: showcaseBorderFlow 9s linear infinite;
+}
+
+@keyframes showcaseBorderFlow {
+    from {
+        background-position: 0% 50%;
+    }
+    to {
+        background-position: 250% 50%;
+    }
+}
+
+/* Showcase hover */
+.products-showcase:hover {
+    transform: translateY(-5px);
+    border-color: rgba(var(--products-accent-rgb), 0.5);
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.3),
+        0 0 45px rgba(var(--products-accent-rgb), 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* =========================================================
+   6. SHOWCASE CONTENT
+========================================================= */
+.showcase-content {
+    position: relative;
+    z-index: 3;
+    min-width: 0;
+    padding: 55px 0 55px 58px;
+}
+
+/* Decorative accent line */
+.showcase-content::before {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 3px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        var(--products-accent),
+        rgba(var(--products-accent-rgb), 0.1)
+    );
+    box-shadow: 0 0 15px rgba(var(--products-accent-rgb), 0.4);
+}
+
+/* Eyebrow */
+.showcase-kicker {
+    display: block;
+    margin: 0 0 25px;
+    color: var(--products-accent);
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 2.7px;
+    line-height: 1.8;
+    text-transform: uppercase;
+}
+
+/* Showcase heading */
+.showcase-title {
+    max-width: 480px;
+    margin: 0 0 20px;
+    color: #f4f8fc;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -2px;
+}
+
+.showcase-title > span {
+    display: inline;
+    background: linear-gradient(
+        100deg,
+        #00e5ff,
+        #67f5e7 55%,
+        #8b5cf6
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Supporting copy */
+.showcase-description {
+    max-width: 440px;
+    margin: 0 0 27px;
+    color: #a3b2c2;
+    font-size: 0.98rem;
+    line-height: 1.9;
+}
+
+/* =========================================================
+   7. SHOWCASE BUTTON
+========================================================= */
+.showcase-button {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-height: 56px;
+    padding: 0 23px;
+    overflow: hidden;
+    border: 1px solid rgba(var(--products-accent-rgb), 0.75);
+    border-radius: 10px;
+    background: var(--products-accent);
+    color: #041116;
+    font-size: 0.93rem;
+    font-weight: 800;
+    letter-spacing: 0.1px;
+    text-decoration: none;
+    box-shadow:
+        0 0 22px rgba(var(--products-accent-rgb), 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Button light sweep */
+.showcase-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: -120%;
+    width: 75%;
+    height: 100%;
+    transform: skewX(-25deg);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+/* Button arrow */
+.showcase-button-icon {
+    display: inline-block;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+/* Hover and keyboard focus */
+
+.showcase-button:hover {
+    transform: translateY(-3px);
+    border-color: var(--products-accent);
+    background: #f0fdff;
+    color: #061116;
+    box-shadow:
+        0 8px 30px rgba(var(--products-accent-rgb), 0.25),
+        0 0 50px rgba(var(--products-accent-rgb), 0.12);
+}
+
+.showcase-button:hover::before {
+    left: 150%;
+}
+
+.showcase-button:hover .showcase-button-icon {
+    transform: translate(3px, -3px);
+}
+
+.showcase-button:focus-visible {
+    outline: 3px solid var(--products-accent);
+    outline-offset: 5px;
+}
+
+/* =========================================================
+   8. PRODUCT IMAGE SHOWCASE
+========================================================= */
+.showcase-visual {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 370px;
+    padding: 30px 25px 30px 0;
+    overflow: hidden;
+}
+
+/* Circular halo */
+.showcase-visual::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 340px;
+    aspect-ratio: 1;
+    border: 1px solid rgba(var(--products-accent-rgb), 0.16);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(var(--products-accent-rgb), 0.13) 0%,
+        rgba(var(--products-accent-rgb), 0.035) 42%,
+        transparent 70%
+    );
+    box-shadow:
+        0 0 70px rgba(var(--products-accent-rgb), 0.07),
+        inset 0 0 45px rgba(var(--products-accent-rgb), 0.045);
+    animation: productHalo 7s ease-in-out infinite alternate;
+}
+
+@keyframes productHalo {
+    from {
+        transform: scale(0.94);
+        opacity: 0.7;
+    }
+    to {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+/* Rotating decorative ring */
+.showcase-visual::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 285px;
+    aspect-ratio: 1;
+    border: 1px dashed rgba(var(--products-accent-rgb), 0.2);
+    border-radius: 50%;
+    animation: productRingRotate 45s linear infinite;
+}
+
+@keyframes productRingRotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Additional ambient image glow */
+.showcase-visual-glow {
+    position: absolute;
+    z-index: -1;
+    width: 75%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(var(--products-accent-rgb), 0.2) 0%,
+        rgba(var(--products-accent-rgb), 0.07) 42%,
+        transparent 72%
+    );
+    filter: blur(18px);
+    animation: showcaseVisualGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes showcaseVisualGlow {
+    from {
+        transform: scale(0.9);
+        opacity: 0.65;
+    }
+    to {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+}
+
+/* Image frame */
+.showcase-image-frame {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 430px;
+    min-height: 270px;
+    padding: 18px;
+    border: 1px solid rgba(var(--products-accent-rgb), 0.17);
+    border-radius: 20px;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.055),
+        rgba(255, 255, 255, 0.01)
+    );
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    backdrop-filter: blur(8px);
+    transition:
+        transform 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+/* Product image */
+.showcase-image-frame img {
+    display: block;
+    width: 100%;
+    max-height: 290px;
+    object-fit: contain;
+    border-radius: 12px;
+    filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.3));
+    transition:
+        transform 0.55s ease,
+        filter 0.55s ease;
+}
+
+/* Showcase hover effects */
+.products-showcase:hover .showcase-image-frame {
+    transform: translateY(-5px);
+    border-color: rgba(var(--products-accent-rgb), 0.4);
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.3),
+        0 0 35px rgba(var(--products-accent-rgb), 0.07);
+}
+
+.products-showcase:hover .showcase-image-frame img {
+    transform: scale(1.04);
+    filter: drop-shadow(0 25px 30px rgba(0, 0, 0, 0.35));
+}
+
+/* Floating image label */
+.showcase-image-label {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 15px;
+    border: 1px solid rgba(var(--products-accent-rgb), 0.2);
+    border-radius: 9px;
+    background: rgba(8, 15, 23, 0.92);
+    color: #c4d3df;
+    font-size: 0.64rem;
+    font-weight: 750;
+    letter-spacing: 1.5px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+}
+
+.showcase-label-dot {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--products-accent);
+    box-shadow: 0 0 10px rgba(var(--products-accent-rgb), 0.7);
+}
+
+/* Corner accents */
+.showcase-corner {
+    position: absolute;
+    z-index: 2;
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+}
+
+.showcase-corner-top {
+    top: 25px;
+    left: 10px;
+    border-top: 2px solid var(--products-accent);
+    border-left: 2px solid var(--products-accent);
+    opacity: 0.7;
+}
+
+.showcase-corner-bottom {
+    right: 10px;
+    bottom: 25px;
+    border-right: 2px solid var(--products-accent);
+    border-bottom: 2px solid var(--products-accent);
+    opacity: 0.7;
+}
+
+/* =========================================================
+   9. PRODUCT CATEGORY NOTE
+========================================================= */
+.showcase-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.showcase-note-dot {
+    position: relative;
+    flex: 0 0 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--products-accent);
+    box-shadow: 0 0 12px rgba(var(--products-accent-rgb), 0.65);
+}
+
+.showcase-note-dot::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 1px solid rgba(var(--products-accent-rgb), 0.45);
+    border-radius: 50%;
+    animation: showcaseNotePulse 2s ease-out infinite;
+}
+
+.showcase-note-text {
+    color: #8294a7;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    line-height: 1.8;
+}
+
+.showcase-note-text > span {
+    padding: 0 3px;
+    color: var(--products-accent);
+}
+
+@keyframes showcaseNotePulse {
+    from {
+        transform: scale(0.7);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   10. LIGHT THEME
+========================================================= */
+html[data-theme="light"] .products,
+body.light-mode .products,
+body.light-theme .products {
+    --products-accent: #007f95;
+    --products-accent-rgb: 0, 127, 149;
+    background: #f6f9fc;
+    color: #111827;
+}
+
+html[data-theme="light"] .products-grid-bg,
+body.light-mode .products-grid-bg,
+body.light-theme .products-grid-bg {
+    opacity: 0.4;
+}
+
+html[data-theme="light"] .products-glow,
+body.light-mode .products-glow,
+body.light-theme .products-glow {
+    opacity: 0.07;
+}
+
+html[data-theme="light"] .products-title,
+body.light-mode .products-title,
+body.light-theme .products-title {
+    color: #111827;
+}
+
+html[data-theme="light"] .products-description,
+body.light-mode .products-description,
+body.light-theme .products-description {
+    color: #64748b;
+}
+
+html[data-theme="light"] .products-showcase,
+body.light-mode .products-showcase,
+body.light-theme .products-showcase {
+    border-color: rgba(0, 127, 149, 0.2);
+    background:
+        radial-gradient(
+            ellipse at 78% 45%,
+            rgba(0, 127, 149, 0.1),
+            transparent 50%
+        ),
+        linear-gradient(
+            125deg,
+            #ffffff 0%,
+            #f1f7fa 55%,
+            #eaf3f8 100%
+        );
+    box-shadow:
+        0 25px 65px rgba(15, 23, 42, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+html[data-theme="light"] .products-showcase:hover,
+body.light-mode .products-showcase:hover,
+body.light-theme .products-showcase:hover {
+    box-shadow:
+        0 30px 75px rgba(15, 23, 42, 0.1),
+        0 0 35px rgba(0, 127, 149, 0.07);
+}
+
+/* Light-theme text */
+html[data-theme="light"] .showcase-title,
+body.light-mode .showcase-title,
+body.light-theme .showcase-title {
+    color: #111827;
+}
+
+html[data-theme="light"] .showcase-description,
+body.light-mode .showcase-description,
+body.light-theme .showcase-description {
+    color: #64748b;
+}
+
+html[data-theme="light"] .showcase-note-text,
+body.light-mode .showcase-note-text,
+body.light-theme .showcase-note-text {
+    color: #64748b;
+}
+
+/* Light-theme image */
+html[data-theme="light"] .showcase-image-frame,
+body.light-mode .showcase-image-frame,
+body.light-theme .showcase-image-frame {
+    border-color: rgba(0, 127, 149, 0.18);
+    background: rgba(255, 255, 255, 0.65);
+}
+
+html[data-theme="light"] .showcase-image-label,
+body.light-mode .showcase-image-label,
+body.light-theme .showcase-image-label {
+    border-color: rgba(0, 127, 149, 0.2);
+    background: rgba(255, 255, 255, 0.94);
+    color: #334155;
+}
+
+/* Light-theme button */
+
+html[data-theme="light"] .showcase-button,
+body.light-mode .showcase-button,
+body.light-theme .showcase-button {
+    border-color: #007f95;
+    background: #007f95;
+    color: #ffffff;
+}
+
+html[data-theme="light"] .showcase-button:hover,
+body.light-mode .showcase-button:hover,
+body.light-theme .showcase-button:hover {
+    background: #006b7e;
+    color: #ffffff;
+}
+
+/* Light-theme heading gradient */
+html[data-theme="light"] .products .products-title span,
+body.light-mode .products .products-title span,
+body.light-theme .products .products-title span {
+    background: linear-gradient(
+        110deg,
+        #007f95,
+        #0891b2,
+        #7c3aed
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+/* =========================================================
+   11. TABLET LAYOUT
+========================================================= */
+
+@media (max-width: 900px) {
+    .products {
+        padding: 100px 0;
+    }
+
+    .products-container {
+        width: min(calc(100% - 40px), 720px);
+    }
+
+    .products-header {
+        margin-bottom: 48px;
+    }
+
+    .products-title {
+        font-size: clamp(2.5rem, 7vw, 4rem);
+        letter-spacing: -1.8px;
+    }
+
+    .products-showcase {
+        grid-template-columns: 1fr 1fr;
+        min-height: 330px;
+    }
+
+    .showcase-content {
+        padding: 40px 0 40px 35px;
+    }
+
+    .showcase-title {
+        font-size: clamp(2.2rem, 5vw, 3.1rem);
+    }
+
+    .showcase-visual {
+        min-height: 320px;
+        padding-right: 15px;
+    }
+
+    .showcase-visual::before {
+        width: 280px;
+    }
+
+    .showcase-visual::after {
+        width: 235px;
+    }
+
+    .showcase-image-frame {
+        min-height: 240px;
+        padding: 14px;
+    }
+
+    .showcase-image-frame img {
+        max-height: 270px;
+    }
+
+    .showcase-image-label {
+        right: 5px;
+        bottom: 18px;
+        font-size: 0.58rem;
+    }
+}
+
+/* =========================================================
+   12. MOBILE LAYOUT
+========================================================= */
+
+@media (max-width: 600px) {
+    .products {
+        padding: 80px 0 90px;
+    }
+
+    .products-container {
+        width: calc(100% - 32px);
+    }
+
+    .products-header {
+        margin-bottom: 38px;
+    }
+
+    .products-overline {
+        margin-bottom: 20px;
+        padding: 8px 12px;
+        font-size: 0.66rem;
+        letter-spacing: 2px;
+    }
+
+    .products-title {
+        font-size: clamp(2.25rem, 10vw, 3.3rem);
+        line-height: 1.12;
+        letter-spacing: -1.6px;
+    }
+
+    .products-description {
+        max-width: 420px;
+        margin-top: 18px;
+        font-size: 0.94rem;
+        line-height: 1.8;
+    }
+
+    .products-showcase {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        border-radius: 20px;
+    }
+
+    .showcase-content {
+        padding: 34px 25px 10px;
+    }
+
+    .showcase-content::before {
+        width: 38px;
+        margin-bottom: 20px;
+    }
+
+    .showcase-kicker {
+        margin-bottom: 20px;
+        font-size: 0.67rem;
+        letter-spacing: 2px;
+    }
+
+    .showcase-title {
+        font-size: clamp(2.25rem, 9vw, 3rem);
+        letter-spacing: -1.4px;
+    }
+
+    .showcase-description {
+        font-size: 0.92rem;
+        line-height: 1.8;
+    }
+
+    .showcase-button {
+        min-height: 52px;
+        padding: 0 19px;
+        gap: 14px;
+        font-size: 0.88rem;
+    }
+
+    .showcase-note {
+        align-items: flex-start;
+        gap: 9px;
+        margin-top: 23px;
+    }
+
+    .showcase-note-text {
+        font-size: 0.59rem;
+        letter-spacing: 0.8px;
+    }
+
+    .showcase-visual {
+        min-height: 270px;
+        padding: 15px 20px 35px;
+    }
+
+    .showcase-visual::before {
+        width: 240px;
+    }
+
+    .showcase-visual::after {
+        width: 205px;
+    }
+
+    .showcase-image-frame {
+        min-height: 210px;
+        padding: 14px;
+    }
+
+    .showcase-image-frame img {
+        max-height: 210px;
+    }
+
+    .showcase-image-label {
+        right: 12px;
+        bottom: 18px;
+    }
+
+    .showcase-corner-top {
+        top: 15px;
+        left: 12px;
+    }
+
+    .showcase-corner-bottom {
+        right: 12px;
+        bottom: 15px;
+    }
+
+    .products-glow {
+        width: 300px;
+        height: 300px;
+        filter: blur(90px);
+    }
+}
+
+/* =========================================================
+   13. EXTRA-SMALL MOBILE SCREENS
+========================================================= */
+
+@media (max-width: 380px) {
+    .products-title {
+        font-size: 2.1rem;
+    }
+
+    .showcase-content {
+        padding-inline: 20px;
+    }
+
+    .showcase-visual {
+        min-height: 215px;
+    }
+
+    .showcase-image-frame img {
+        max-height: 190px;
+    }
+
+    .showcase-image-label {
+        padding: 10px;
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* =========================================================
+   14. REVEAL ANIMATIONS
+========================================================= */
+
+/*
+   Default visibility keeps the section readable if JavaScript
+   does not initialize the reveal animation.
+*/
+
+.products .reveal {
+    opacity: 1;
+    transform: none;
+}
+
+/*
+   These states apply only when the site's JavaScript adds
+   the corresponding classes.
+*/
+
+.products .reveal.is-hidden {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+.products .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+/* =========================================================
+   15. REDUCED MOTION ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .products *,
+    .products *::before,
+    .products *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -3,6 +3,8 @@ import "./css/main.css";
 import navbarHtml from "./sections/navbar/navbar.html?raw";
 import heroHtml from "./sections/hero/hero.html?raw";
 import servicesHtml from "./sections/services/services.html?raw";
+import productsHtml from "./sections/products/products.html?raw";
+import trainingHtml from "./sections/training/training.html?raw";
 
 function loadSection(id, html) {
     const container = document.getElementById(id);
@@ -18,6 +20,8 @@ function loadSection(id, html) {
 loadSection("navbar", navbarHtml);
 loadSection("hero", heroHtml);
 loadSection("services", servicesHtml);
+loadSection("products", productsHtml);
+loadSection("training-section", trainingHtml);
 
 /* =========================================
    THEME SYSTEM
@@ -346,3 +350,58 @@ function initServicesExpansion() {
 }
 
 initServicesExpansion();
+
+if (typeof window.initTraining === "function") {
+    window.initTraining();
+}
+
+/* =========================================
+   PRODUCTS CATEGORY FILTERS
+========================================= */
+
+function initProductsFilters() {
+    const productsSection = document.querySelector(".products");
+
+    if (!productsSection) return;
+
+    const filters = productsSection.querySelectorAll(".products-filter");
+    const cards = productsSection.querySelectorAll(".product-card");
+
+    filters.forEach((button) => {
+        button.addEventListener("click", () => {
+            const selectedCategory = button.dataset.filter;
+
+            filters.forEach((filter) => {
+                const isActive = filter === button;
+
+                filter.classList.toggle("is-active", isActive);
+                filter.setAttribute("aria-pressed", String(isActive));
+            });
+
+            cards.forEach((card, index) => {
+                const matches =
+                    selectedCategory === "all" ||
+                    card.dataset.category === selectedCategory;
+
+                card.hidden = !matches;
+
+                if (matches) {
+                    card.style.animationDelay =
+                        `${Math.min(index * 45, 225)}ms`;
+
+                    card.classList.remove("is-filtering-in");
+
+                    // Restart the entrance animation.
+                    void card.offsetWidth;
+
+                    card.classList.add("is-filtering-in");
+                } else {
+                    card.style.removeProperty("animation-delay");
+                    card.classList.remove("is-filtering-in");
+                }
+            });
+        });
+    });
+}
+
+initProductsFilters();
