@@ -3,8 +3,8 @@ import "./css/main.css";
 import navbarHtml from "./sections/navbar/navbar.html?raw";
 import heroHtml from "./sections/hero/hero.html?raw";
 import servicesHtml from "./sections/services/services.html?raw";
-import productsHtml from "./sections/products/products.html?raw";
-import trainingHtml from "./sections/training/training.html?raw";
+import productsHtml from "./sections/Products/products.html?raw";
+import trainingHtml from "./sections/Training/Training.html?raw";
 
 function loadSection(id, html) {
     const container = document.getElementById(id);
