@@ -1,56 +1,56 @@
 /* ==========================================
-   WAVE TECHNOLOGY HUB
-   TRAINING INTERACTIONS
+WAVE TECHNOLOGY HUB
+TRAINING SECTION INTERACTIONS
 ========================================== */
 
-function initTraining() {
-    const section = document.querySelector(".training");
+/**
 
-    if (!section) return;
+* Initialize pointer glow effects for training cards.
+*
+* This function is called by main.js after the
+* training HTML has been inserted into the page.
+  */
+  export function initTraining() {
+  const section = document.querySelector(".training");
 
-    // Prevent duplicate event listeners.
-    if (section.dataset.trainingInitialized === "true") {
-        return;
-    }
+  // Stop if the training section doesn't exist.
+  if (!section) return;
 
-    section.dataset.trainingInitialized = "true";
+  // Prevent duplicate event listeners.
+  if (section.dataset.trainingInitialized === "true") {
+  return;
+  }
 
-    const cards = section.querySelectorAll(".training-card");
+  // Pointer glow is unnecessary on touch-only devices.
+  const supportsHover = window.matchMedia(
+  "(hover: hover) and (pointer: fine)"
+  ).matches;
 
-    // Pointer glow is only useful on devices with a fine pointer.
-    const supportsHover = window.matchMedia(
-        "(hover: hover) and (pointer: fine)"
-    ).matches;
+  if (!supportsHover) return;
 
-    if (!supportsHover) return;
+  const cards = section.querySelectorAll(".training-card");
 
-    cards.forEach((card) => {
-        card.addEventListener("pointermove", (event) => {
-            const rect = card.getBoundingClientRect();
+  // Nothing to initialize if there are no cards.
+  if (!cards.length) return;
 
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
+  // Mark the section as initialized.
+  section.dataset.trainingInitialized = "true";
 
-            card.style.setProperty("--pointer-x", `${x}px`);
-            card.style.setProperty("--pointer-y", `${y}px`);
-        });
+  cards.forEach((card) => {
+  card.addEventListener("pointermove", (event) => {
+  const rect = card.getBoundingClientRect();
 
-        card.addEventListener("pointerleave", () => {
-            card.style.removeProperty("--pointer-x");
-            card.style.removeProperty("--pointer-y");
-        });
-    });
-}
+       const x = event.clientX - rect.left;
+       const y = event.clientY - rect.top;
 
+       card.style.setProperty("--pointer-x", `${x}px`);
+       card.style.setProperty("--pointer-y", `${y}px`);
+   });
 
-// Support both normal page loading and dynamically inserted sections.
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initTraining, {
-        once: true
-    });
-} else {
-    initTraining();
-}
+   card.addEventListener("pointerleave", () => {
+       card.style.removeProperty("--pointer-x");
+       card.style.removeProperty("--pointer-y");
+   });
 
-// Allows main.js to initialize the section after injecting training.html.
-window.initTraining = initTraining;
+  });
+  }

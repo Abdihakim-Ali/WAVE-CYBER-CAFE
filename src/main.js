@@ -3,8 +3,9 @@ import "./css/main.css";
 import navbarHtml from "./sections/navbar/navbar.html?raw";
 import heroHtml from "./sections/hero/hero.html?raw";
 import servicesHtml from "./sections/services/services.html?raw";
-import productsHtml from "./sections/Products/products.html?raw";
-import trainingHtml from "./sections/Training/Training.html?raw";
+import productsHtml from "./sections/products/products.html?raw";
+import trainingHtml from "./sections/training/training.html?raw";
+import { initTraining } from "./sections/training/training.js";
 
 function loadSection(id, html) {
     const container = document.getElementById(id);
@@ -101,37 +102,48 @@ if (themeToggle) {
 
 console.log("🌊 Wave Technology Hub");
 
-/* =========================================
-   GLOBAL SCROLL REVEAL
-========================================= */
-
 function initScrollReveal() {
-    const revealElements =
-        document.querySelectorAll(".reveal");
+const revealElements =
+document.querySelectorAll(".reveal");
 
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
+if (!revealElements.length) return;
 
-                entry.target.classList.add("is-visible");
-
-                // Reveal only once.
-                observer.unobserve(entry.target);
-            });
-        },
-        {
-            threshold: 0.18,
-            rootMargin: "0px 0px -8% 0px",
-        }
-    );
-
+// Show everything if IntersectionObserver is unsupported.
+if (!("IntersectionObserver" in window)) {
     revealElements.forEach((element) => {
-        revealObserver.observe(element);
+        element.classList.add("is-visible");
     });
+
+    return;
+}
+// improved scroll behaviour
+
+
+const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add("is-visible");
+
+            // Reveal each element only once.
+            observer.unobserve(entry.target);
+        });
+    },
+    {
+        threshold: 0.18,
+        rootMargin: "0px 0px -8% 0px",
+    }
+);
+
+revealElements.forEach((element) => {
+    revealObserver.observe(element);
+});
+
 }
 
 initScrollReveal();
+
 
  /* =========================================
    SERVICES EXPANSION
@@ -351,9 +363,7 @@ function initServicesExpansion() {
 
 initServicesExpansion();
 
-if (typeof window.initTraining === "function") {
-    window.initTraining();
-}
+initTraining();
 
 /* =========================================
    PRODUCTS CATEGORY FILTERS
