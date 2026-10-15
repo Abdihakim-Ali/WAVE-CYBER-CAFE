@@ -1,37 +1,25 @@
 /* ==========================================
-   WAVE TECHNOLOGY HUB
-   TRAINING SECTION
-========================================== */
-
-
-/* ==========================================
    SECTION FOUNDATION
 ========================================== */
 
 .training {
     --training-accent: var(--clr-primary, #22d3ee);
     --training-accent-rgb: 34, 211, 238;
-
     position: relative;
     isolation: isolate;
     overflow: hidden;
-
     padding: 140px 0 100px;
-
     background: var(--clr-bg, #0d1117);
     color: var(--clr-text, #e6edf3);
 }
 
-
 /* ==========================================
    BACKGROUND
 ========================================== */
-
 .training-background {
     position: absolute;
     inset: 0;
     z-index: -1;
-
     overflow: hidden;
     pointer-events: none;
 }
@@ -39,7 +27,6 @@
 .training-grid-bg {
     position: absolute;
     inset: 0;
-
     background-image:
         linear-gradient(
             rgba(var(--training-accent-rgb), 0.035) 1px,
@@ -50,9 +37,7 @@
             rgba(var(--training-accent-rgb), 0.035) 1px,
             transparent 1px
         );
-
     background-size: 60px 60px;
-
     mask-image: linear-gradient(
         to bottom,
         transparent,
@@ -60,7 +45,6 @@
         black 80%,
         transparent
     );
-
     -webkit-mask-image: linear-gradient(
         to bottom,
         transparent,
@@ -72,33 +56,25 @@
 
 .training-glow {
     position: absolute;
-
     width: 480px;
     height: 480px;
-
     border-radius: 50%;
-
     filter: blur(120px);
     opacity: 0.10;
-
     pointer-events: none;
-
     animation: trainingGlowFloat 12s ease-in-out infinite alternate;
 }
 
 .training-glow-one {
     top: 5%;
     right: -180px;
-
     background: var(--training-accent);
 }
 
 .training-glow-two {
     bottom: -180px;
     left: -180px;
-
     background: #8b5cf6;
-
     animation-delay: -6s;
 }
 
@@ -106,35 +82,27 @@
     from {
         transform: translate3d(0, -20px, 0);
     }
-
     to {
         transform: translate3d(-25px, 25px, 0);
     }
 }
 
-
 /* ==========================================
    MAIN CONTAINER
 ========================================== */
-
 .training-container {
     position: relative;
     z-index: 1;
-
     width: min(100% - 48px, 1240px);
     margin-inline: auto;
 }
 
-
 /* ==========================================
    SECTION HEADER
 ========================================== */
-
 .training-header {
     max-width: 790px;
-
     margin: 0 auto 76px;
-
     text-align: center;
 }
 
@@ -143,11 +111,8 @@
     align-items: center;
     justify-content: center;
     gap: 11px;
-
     margin-bottom: 25px;
-
     color: var(--training-accent);
-
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.2em;
@@ -156,18 +121,13 @@
 
 .training-live-dot {
     position: relative;
-
     width: 7px;
     height: 7px;
-
     flex-shrink: 0;
-
     border-radius: 50%;
     background: var(--training-accent);
-
     box-shadow:
         0 0 10px rgba(var(--training-accent-rgb), 0.7);
-
     animation: trainingDotPulse 2s ease-in-out infinite;
 }
 
@@ -177,7 +137,6 @@
         opacity: 1;
         box-shadow: 0 0 10px rgba(var(--training-accent-rgb), 0.7);
     }
-
     50% {
         opacity: 0.55;
         box-shadow: 0 0 18px rgba(var(--training-accent-rgb), 0.95);
@@ -186,9 +145,7 @@
 
 .training-title {
     margin: 0;
-
     color: var(--clr-text, #e6edf3);
-
     font-size: clamp(2.8rem, 6vw, 5.1rem);
     font-weight: 850;
     letter-spacing: -0.065em;
@@ -197,57 +154,40 @@
 
 .training-title span {
     display: inline-block;
-
     color: var(--training-accent);
-
-    text-shadow:
-        0 0 35px rgba(var(--training-accent-rgb), 0.13);
+    text-shadow:0 0 35px rgba(var(--training-accent-rgb), 0.13);
 }
 
 .training-description {
     max-width: 650px;
-
     margin: 27px auto 0;
-
     color: var(--clr-text-muted, #8b949e);
-
     font-size: 1rem;
     line-height: 1.9;
 }
 
-
 /* ==========================================
    MAIN CONTENT LAYOUT
 ========================================== */
-
 .training-content {
     display: grid;
-
     grid-template-columns: 0.9fr 1.1fr;
-
     align-items: stretch;
     gap: 28px;
 }
 
-
 /* ==========================================
    INTRODUCTION PANEL
 ========================================== */
-
 .training-intro {
     position: relative;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
     min-width: 0;
-
     padding: 38px;
-
     border: 1px solid rgba(var(--training-accent-rgb), 0.16);
     border-radius: 22px;
-
     background:
         linear-gradient(
             145deg,
@@ -255,10 +195,8 @@
             transparent 48%
         ),
         var(--clr-surface, #161b22);
-
     box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.10);
-
     transition:
         border-color 300ms ease,
         box-shadow 300ms ease,
@@ -267,22 +205,17 @@
 
 .training-intro::before {
     position: absolute;
-
     top: 0;
     left: 38px;
     right: 38px;
-
     height: 1px;
-
     background: linear-gradient(
         90deg,
         transparent,
         var(--training-accent),
         transparent
     );
-
     opacity: 0.65;
-
     content: "";
 }
 
@@ -290,14 +223,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     width: 100%;
     margin-bottom: 54px;
 }
 
 .training-intro-label {
     color: var(--training-accent);
-
     font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.16em;
@@ -306,17 +237,12 @@
 .training-intro-icon {
     display: grid;
     place-items: center;
-
     width: 40px;
     height: 40px;
-
     border: 1px solid rgba(var(--training-accent-rgb), 0.25);
     border-radius: 12px;
-
     color: var(--training-accent);
-
     font-size: 1.25rem;
-
     transition:
         transform 300ms ease,
         background 300ms ease;
@@ -324,9 +250,7 @@
 
 .training-intro-title {
     margin: 0;
-
     color: var(--clr-text, #e6edf3);
-
     font-size: clamp(1.8rem, 2.7vw, 2.65rem);
     font-weight: 800;
     letter-spacing: -0.055em;
@@ -335,17 +259,13 @@
 
 .training-intro-title span {
     display: block;
-
     margin-top: 7px;
-
     color: var(--training-accent);
 }
 
 .training-intro-description {
     margin: 22px 0 30px;
-
     color: var(--clr-text-muted, #8b949e);
-
     font-size: 0.94rem;
     line-height: 1.9;
 }
@@ -355,22 +275,16 @@
     align-items: center;
     justify-content: center;
     gap: 22px;
-
     min-height: 52px;
     max-width: 100%;
-
     padding: 13px 18px;
-
     border: 1px solid var(--training-accent);
     border-radius: 10px;
-
     background: var(--training-accent);
     color: #071116;
-
     font-size: 0.85rem;
     font-weight: 800;
     text-decoration: none;
-
     transition:
         transform 250ms ease,
         box-shadow 250ms ease,
@@ -379,7 +293,6 @@
 
 .training-cta:hover {
     transform: translateY(-3px);
-
     box-shadow:
         0 10px 30px rgba(var(--training-accent-rgb), 0.20);
 }
@@ -391,7 +304,6 @@
 
 .training-cta-arrow {
     font-size: 1.1rem;
-
     transition: transform 250ms ease;
 }
 
@@ -403,12 +315,9 @@
     display: flex;
     align-items: center;
     gap: 12px;
-
     margin-top: auto;
     padding-top: 40px;
-
     color: var(--clr-text-muted, #8b949e);
-
     font-size: 0.59rem;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -418,48 +327,33 @@
 .training-footer-line {
     width: 24px;
     height: 1px;
-
     flex-shrink: 0;
-
     background: var(--training-accent);
 }
-
 
 /* ==========================================
    TRAINING CARDS GRID
 ========================================== */
-
 .training-areas {
     display: grid;
-
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
     gap: 18px;
 }
-
 
 /* ==========================================
    INDIVIDUAL TRAINING CARD
 ========================================== */
-
 .training-card {
     position: relative;
-
     display: flex;
     flex-direction: column;
-
     min-width: 0;
     min-height: 270px;
-
     padding: 24px;
-
     overflow: hidden;
-
     border: 1px solid var(--clr-border, #30363d);
     border-radius: 18px;
-
     background: var(--clr-surface, #161b22);
-
     transition:
         transform 300ms ease,
         border-color 300ms ease,
@@ -469,22 +363,16 @@
 .training-card::after {
     position: absolute;
     inset: 0;
-
     border-radius: inherit;
-
     background: radial-gradient(
         300px circle at var(--pointer-x, -1000px)
         var(--pointer-y, -1000px),
         rgba(var(--training-accent-rgb), 0.07),
         transparent 70%
     );
-
     opacity: 0;
-
     pointer-events: none;
-
     transition: opacity 250ms ease;
-
     content: "";
 }
 
@@ -494,32 +382,24 @@
 
 .training-card::before {
     position: absolute;
-
     top: 0;
     left: 18px;
     right: 18px;
-
     height: 1px;
-
     background: linear-gradient(
         90deg,
         transparent,
         rgba(var(--training-accent-rgb), 0.75),
         transparent
     );
-
     opacity: 0;
-
     transition: opacity 300ms ease;
-
     content: "";
 }
 
 .training-card:hover {
     transform: translateY(-5px);
-
     border-color: rgba(var(--training-accent-rgb), 0.42);
-
     box-shadow:
         0 18px 40px rgba(0, 0, 0, 0.13),
         0 0 25px rgba(var(--training-accent-rgb), 0.035);
@@ -533,15 +413,12 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-
     gap: 12px;
-
     margin-bottom: 28px;
 }
 
 .training-card-number {
     color: var(--clr-text-muted, #8b949e);
-
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -550,16 +427,12 @@
 .training-card-icon {
     display: grid;
     place-items: center;
-
     width: 48px;
     height: 48px;
-
     border: 1px solid rgba(var(--training-accent-rgb), 0.19);
     border-radius: 14px;
-
     background: rgba(var(--training-accent-rgb), 0.06);
     color: var(--training-accent);
-
     transition:
         transform 300ms ease,
         background 300ms ease,
@@ -568,16 +441,13 @@
 
 .training-card-icon svg {
     display: block;
-
     width: 28px;
     height: 28px;
 }
 
 .training-card:hover .training-card-icon {
     transform: translateY(-2px);
-
     background: rgba(var(--training-accent-rgb), 0.11);
-
     box-shadow:
         0 0 22px rgba(var(--training-accent-rgb), 0.08);
 }
@@ -588,11 +458,8 @@
 
 .training-card-category {
     display: block;
-
     margin-bottom: 10px;
-
     color: var(--training-accent);
-
     font-size: 0.58rem;
     font-weight: 800;
     letter-spacing: 0.12em;
@@ -601,9 +468,7 @@
 
 .training-card-title {
     margin: 0;
-
     color: var(--clr-text, #e6edf3);
-
     font-size: 1.08rem;
     font-weight: 750;
     letter-spacing: -0.035em;
@@ -612,9 +477,7 @@
 
 .training-card-description {
     margin: 12px 0 22px;
-
     color: var(--clr-text-muted, #8b949e);
-
     font-size: 0.81rem;
     line-height: 1.8;
 }
@@ -624,14 +487,10 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-
     margin-top: auto;
     padding-top: 15px;
-
     border-top: 1px solid var(--clr-border, #30363d);
-
     color: var(--clr-text-muted, #8b949e);
-
     font-size: 0.57rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -639,9 +498,7 @@
 
 .training-card-arrow {
     color: var(--training-accent);
-
     font-size: 1rem;
-
     transition: transform 250ms ease;
 }
 
@@ -649,41 +506,30 @@
     transform: translate(3px, -3px);
 }
 
-
 /* ==========================================
    BOTTOM STATEMENT
 ========================================== */
-
 .training-bottom {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 13px;
-
     margin-top: 65px;
-
     text-align: center;
 }
 
 .training-bottom-indicator {
     width: 7px;
     height: 7px;
-
     flex-shrink: 0;
-
     border-radius: 50%;
-
     background: var(--training-accent);
-
-    box-shadow:
-        0 0 12px rgba(var(--training-accent-rgb), 0.45);
+    box-shadow:0 0 12px rgba(var(--training-accent-rgb), 0.45);
 }
 
 .training-bottom p {
     margin: 0;
-
     color: var(--clr-text-muted, #8b949e);
-
     font-size: 0.67rem;
     font-weight: 800;
     letter-spacing: 0.13em;
@@ -694,11 +540,9 @@
     color: var(--training-accent);
 }
 
-
 /* ==========================================
    LIGHT THEME
 ========================================== */
-
 html[data-theme="light"] .training,
 body.light-mode .training,
 body.light-theme .training {
@@ -725,7 +569,6 @@ body.light-mode .training-card,
 body.light-theme .training-intro,
 body.light-theme .training-card {
     background-color: var(--clr-surface, #ffffff);
-
     box-shadow:
         0 12px 35px rgba(31, 35, 40, 0.035);
 }
@@ -777,11 +620,9 @@ body.light-theme .training-bottom p {
     color: var(--clr-text-muted, #656d76);
 }
 
-
 /* ==========================================
    TABLET
 ========================================== */
-
 @media (max-width: 1050px) {
     .training {
         padding: 120px 0 85px;
@@ -827,7 +668,6 @@ body.light-theme .training-bottom p {
     }
 }
 
-
 /* ==========================================
    MOBILE
 ========================================== */
@@ -847,7 +687,6 @@ body.light-theme .training-bottom p {
 
     .training-overline {
         margin-bottom: 20px;
-
         font-size: 0.65rem;
         letter-spacing: 0.15em;
     }
@@ -859,7 +698,6 @@ body.light-theme .training-bottom p {
 
     .training-description {
         margin-top: 20px;
-
         font-size: 0.91rem;
         line-height: 1.8;
     }
@@ -870,7 +708,6 @@ body.light-theme .training-bottom p {
 
     .training-intro {
         padding: 25px;
-
         border-radius: 18px;
     }
 
@@ -889,22 +726,18 @@ body.light-theme .training-bottom p {
 
     .training-intro-description {
         margin: 18px 0 25px;
-
         font-size: 0.88rem;
     }
 
     .training-cta {
         width: 100%;
         justify-content: space-between;
-
         gap: 12px;
-
         font-size: 0.8rem;
     }
 
     .training-intro-footer {
         align-items: flex-start;
-
         font-size: 0.53rem;
     }
 
@@ -915,9 +748,7 @@ body.light-theme .training-bottom p {
 
     .training-card {
         min-height: 0;
-
         padding: 23px;
-
         border-radius: 16px;
     }
 
@@ -951,11 +782,9 @@ body.light-theme .training-bottom p {
     }
 }
 
-
 /* ==========================================
    SMALL MOBILE
 ========================================== */
-
 @media (max-width: 380px) {
     .training-container {
         width: calc(100% - 24px);
@@ -989,7 +818,6 @@ body.light-theme .training-bottom p {
     }
 }
 
-
 /* ==========================================
    ACCESSIBILITY
 ========================================== */
@@ -1001,7 +829,6 @@ body.light-theme .training-bottom p {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
-
         transition-duration: 0.01ms !important;
     }
 }

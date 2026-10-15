@@ -3,13 +3,19 @@
    PRODUCTS INTERACTIONS
 ========================================== */
 
-function initProducts() {
+/**
+ * Initialize the Products section.
+ *
+ * Called by main.js after the Products HTML
+ * has been inserted into the document.
+ */
+export function initProducts() {
     const productsSection = document.querySelector(".products");
 
     // Stop safely if the section is not present.
     if (!productsSection) return;
 
-    // Avoid duplicate event listeners.
+    // Prevent duplicate event listeners.
     if (productsSection.dataset.productsInitialized === "true") {
         return;
     }
@@ -19,7 +25,7 @@ function initProducts() {
     const emptyState = productsSection.querySelector(".products-empty");
 
     /*
-       The current featured showcase does not contain
+       The featured showcase currently does not contain
        catalogue filters or product cards.
 
        Leave it untouched until those elements exist.
@@ -28,7 +34,6 @@ function initProducts() {
 
     // Mark initialized only after validating the catalogue.
     productsSection.dataset.productsInitialized = "true";
-
 
     /* ======================================
        PRODUCT CATEGORY FILTERS
@@ -41,7 +46,8 @@ function initProducts() {
             const cardCategory = card.dataset.category;
 
             const shouldShow =
-                category === "all" || cardCategory === category;
+                category === "all" ||
+                cardCategory === category;
 
             card.classList.remove(
                 "is-filtering-in",
@@ -74,7 +80,6 @@ function initProducts() {
         }
     }
 
-
     /* ======================================
        FILTER BUTTON STATES
     ====================================== */
@@ -98,7 +103,6 @@ function initProducts() {
         });
     });
 
-
     /* ======================================
        PRODUCT IMAGE FALLBACK
     ====================================== */
@@ -111,22 +115,25 @@ function initProducts() {
         img.addEventListener(
             "error",
             () => {
-                const imageContainer = img.closest(".product-image");
+                const imageContainer =
+                    img.closest(".product-image");
 
                 if (!imageContainer) return;
 
-                imageContainer.classList.add("product-image-missing");
+                imageContainer.classList.add(
+                    "product-image-missing"
+                );
+
                 img.hidden = true;
             },
             { once: true }
         );
 
-        // Handle images that failed before the listener was attached.
+        // Handle images that failed before initialization.
         if (img.complete && img.naturalWidth === 0) {
             img.dispatchEvent(new Event("error"));
         }
     });
-
 
     /* ======================================
        CLEAN UP ENTRANCE ANIMATIONS
@@ -143,7 +150,6 @@ function initProducts() {
         card.style.removeProperty("animation-delay");
     });
 
-
     /* ======================================
        INITIAL FILTER STATE
     ====================================== */
@@ -152,10 +158,12 @@ function initProducts() {
         (button) => button.classList.contains("is-active")
     );
 
-    const initialCategory = activeFilter?.dataset.filter || "all";
+    const initialCategory =
+        activeFilter?.dataset.filter || "all";
 
     filters.forEach((button) => {
-        const isActive = button.dataset.filter === initialCategory;
+        const isActive =
+            button.dataset.filter === initialCategory;
 
         button.classList.toggle("is-active", isActive);
 
@@ -167,19 +175,3 @@ function initProducts() {
 
     filterProducts(initialCategory);
 }
-
-
-/* ==========================================
-   INITIALIZATION
-========================================== */
-
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initProducts, {
-        once: true
-    });
-} else {
-    initProducts();
-}
-
-// Allow dynamically loaded sections to be initialized.
-window.initProducts = initProducts;
