@@ -5,9 +5,11 @@ import heroHtml from "./sections/hero/hero.html?raw";
 import servicesHtml from "./sections/services/services.html?raw";
 import productsHtml from "./sections/products/products.html?raw";
 import trainingHtml from "./sections/training/training.html?raw";
+import whyChooseWaveHtml from "./sections/why-choose-wave/why-choose-wave.html?raw";
 
 import { initProducts } from "./sections/products/products.js";
 import { initTraining } from "./sections/training/training.js";
+import { initWhyChooseWave } from "./sections/why-choose-wave/why-choose-wave.js";
 
 /* ==========================================
    SECTION LOADER
@@ -35,6 +37,7 @@ loadSection("hero", heroHtml);
 loadSection("services", servicesHtml);
 loadSection("products", productsHtml);
 loadSection("training-section", trainingHtml);
+loadSection("why-choose-wave", whyChooseWaveHtml);
 
 /*
    All section HTML has now been inserted.
@@ -277,5 +280,7 @@ initServicesExpansion();
 initProducts();
 
 initTraining();
+
+initWhyChooseWave();
 
 console.log("🌊 Wave Technology Hub initialized.");
